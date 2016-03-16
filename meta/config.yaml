@@ -1,0 +1,42 @@
+# /data/config.yaml
+
+title: caixw的小站
+subtitle: 好记性不如烂笔头
+url: https://caixw.io
+uptime: 2016-03-06T00:00:01+0800
+pageSize: 20
+longDateFormat: 2006-01-02 15:04
+shortDateFormat: 2006-01-02
+theme: default
+
+author:
+    name: caixw
+    url: https://caixw.io
+
+menus:
+  - url: /tags.html
+    title: 标签
+    text: 标签
+    icon: tags
+  - url: /posts/2016/about.html
+    title: 关于
+    text: 关于
+    icon: info-circle
+
+atom:
+    url: /atom.xml
+    title: atom
+    size: 20
+
+rss:
+    url: /rss.xml
+    title: atom
+    size: 20
+
+sitemap:
+    url: /sitemap.xml
+    enableTag: true
+    tagPriority: 0.5
+    postPriority: 0.4
+    tagChangefreq: "monthly"
+    postChangefreq: "weekly"

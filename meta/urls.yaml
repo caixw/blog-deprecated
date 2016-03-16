@@ -1,0 +1,7 @@
+root:
+suffix: .html
+posts: /posts
+post: /posts
+tags: /tags
+tag: /tags
+themes: /themes
