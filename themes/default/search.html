@@ -1,0 +1,13 @@
+{{define "search"}}
+{{template "header" .}}
+
+<form action="" method="GET" id="search">
+    <input type="search" name="q" value="{{.Keywords}}" />
+    <button type="submit">搜索</button>
+</form>
+
+{{template "post-list" .}}
+
+
+{{template "footer" .}}
+{{end}}
