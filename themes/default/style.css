@@ -90,8 +90,8 @@ code, pre{
     word-break: break-all;
 }
 
-#content .post{
-    margin:2rem 0rem;
+#content>.container>.item{
+    margin:1rem 0rem;
 }
 
 #content .post .title{
@@ -112,14 +112,24 @@ code, pre{
     border-bottom: 1px solid #f5f5f5;
 }
 
-/************* #page-nav ***********/
-
-#pages-nav .container{
-    border-top: 1px solid #699cc8;
-    padding:2rem 0rem;
+#content .search{
+    margin-bottom:1rem;
 }
 
-#pages-nav .next{
+#content .search input{
+    width:100%;
+    outline:none;
+    padding:0.2rem .5rem;
+    line-height:2rem;
+    border:1px solid #699cc8;
+    font-size:1.2rem;
+}
+
+#content .tags{
+    margin-bottom:1rem;
+}
+
+.pages-nav .next{
     float:right;
 }
 
@@ -134,24 +144,4 @@ code, pre{
 #top:hover{
     text-decoration:none;
     color:#699cc8;
-}
-
-/***************** #search ************/
-
-#search{
-    margin-bottom:1rem;
-}
-
-#search input{
-    width:100%;
-    outline:none;
-    padding:0.2rem .5rem;
-    line-height:2rem;
-    border:1px solid #699cc8;
-    font-size:1.2rem;
-}
-
-/**************** #tags **********/
-.tags{
-    margin-bottom:1rem;
 }
