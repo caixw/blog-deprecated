@@ -135,3 +135,23 @@ code, pre{
     text-decoration:none;
     color:#699cc8;
 }
+
+/***************** #search ************/
+
+#search{
+    margin-bottom:1rem;
+}
+
+#search input{
+    width:100%;
+    outline:none;
+    padding:0.2rem .5rem;
+    line-height:2rem;
+    border:1px solid #699cc8;
+    font-size:1.2rem;
+}
+
+/**************** #tags **********/
+.tags{
+    margin-bottom:1rem;
+}
