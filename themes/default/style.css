@@ -99,8 +99,16 @@ code, pre{
     margin-bottom:0.2rem;
 }
 
+#content .post .meta{
+    margin-bottom:.5rem;
+}
+
 #content .post .meta .item{
     margin-right:.7rem;
+}
+
+#content .post .meta .item a[rel=tag]{
+    margin-right:.5rem;
 }
 
 #content .post section>p{
@@ -127,6 +135,10 @@ code, pre{
 
 #content .tags{
     margin-bottom:1rem;
+}
+
+#content .tags .item{
+    margin-right:1rem;
 }
 
 .pages-nav .next{
