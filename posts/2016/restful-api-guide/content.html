@@ -1,0 +1,96 @@
+<section>
+    <p>RESTful API 为网络应用程序设计提供了一套统一、合理的风格。它只是一种风格，而不是标准，所以也就没有一套统一的标准去规范化这些设计，本文从实践的角度出发，讨论 RESTful API 设计上的一些细节，探讨如何设计出一套好用、合理、精炼的 API。</p>
+</section>
+
+<section>
+    <h2>版本</h2>
+    <p>按照 RESTful API 的风格，不同版本的 API 应该是同一种资源的不同表现形式，所以将版本号放在报头，是最符合学术界对 RESTful API 的的定义，但是实际操作情况下，将版本号放在报头不直观，而且操作起来也不方便，反而不如直接放在 <abbr title="统一资源定位符（Uniform Resource Locator）">URL</abbr> 来得直接。所以现在两种方式都很常见，各人可以按照自己的喜好来挑一种方式来实现。个人倾向于直接放在报头中。</p>
+    <p>将版本号放在 URL：</p>
+    <ul>
+        <li>https://api.caixw.io/v1/users</li>
+        <li>https://api.caixw.io/v2/users</li>
+    </ul>
+    <p>将版本号放在报头，一般放在Accept字段：</p>
+    <ul>
+        <li>Accept: application/json;version=1</li>
+        <li>Accept: application/json;version=2</li>
+    </ul>
+</section>
+
+<section>
+    <h2>路径</h2>
+    <p>在 RESTful 中一条 URL 表示的是一个独立的资源，是该资源的唯一标志。命名上应该具有自描述性，给人一种直觉上的关联，比如 <samp>https://api.caixw.io/users/1</samp> 让人一看就知道表示的是 ID 为 1 的用户。统一使用名词复数，会使 URL 看起来更加规整，而且对开发者和使用者来说，有个统一的规定，也更容易理解和实现。</p>
+    <ul>
+        <li><samp>GET https://api.caixw.io/users</samp> 表示用户列表；</li>
+        <li><samp>PUT https://api.caixw.io/users/1</samp> 替换 ID 为 1 的用户信息；</li>
+        <li><samp>DELETE https://api.caixw.io/users/1/orders/5</samp> 删除 ID 为 1 的用户的第 5 条订单。</li>
+    </ul>
+
+    <p>一此无法使用 CRUD 表示的操作，应该尽量抽象成相应的操作，比如登录和注销，应该是添加或是删除一个登录的 token：</p>
+    <ul>
+        <li><samp>POST https://api.caixw.io/login</samp> 登录；</li>
+        <li><samp>DELETE https://api.caixw.io/login</samp> 注销。</li>
+    </ul>
+</section>
+
+<section>
+    <h2>过滤参数</h2>
+    <p>使用 GET 获取数据时，当数据量过大时，并不是所有数据都是用户需要一次获取的，这时候在服务端对结果进行过滤、排序、分页、查询等功能再返回会是一个比较友好的操作。这些功能应该通过 URL 的查询参数实现。参数值应该尽量避免无意义的值，比如 <samp>state=1</samp> 从开发者的角度来说，或许可以省略好多的工作量，但是从使用者的角度来说，很难理解这个值 1 代码的是什么意思，当 state 有许多的不同的值时，结果会更加糟糕，所以给出一个确定的值：<samp>state=lock</samp>，会是一个好习惯。</p>
+    <ul>
+        <li><samp>GET https://api.caixw.io/users?state=lock</samp>只获取锁定状态的用户列表；</li>
+        <li><samp>GET https://api.caixw.io/users?state=lock&size=20</samp>只获取锁定状态的用户列表，最多显示20条记录；</li>
+        <li><samp>GET https://api.caixw.io/users?sort=created,id</samp>按 created 和 id 字段排序；</li>
+    </ul>
+</section>
+
+<section>
+    <h2>请求方法</h2>
+    <p>RESTful 的核心思想就是将各个不同的 URL 理解成逻辑上的资源，针对资源做 <abbr title="Create Read Update Delete">CRUD</abbr> 的操作。而这些 CRUD 的操作分别对应着不同的 HTTP 请求方法：</p>
+    <ul>
+        <li>GET：获取资源（一项或多项），安全且幂等；</li>
+        <li>POST：在服务器新建一个资源，不安全不幂等；</li>
+        <li>PUT：替换当前资源（客户只需要提供完整的资源属性），不安全但幂等；</li>
+        <li>PATCH：修正当前资源（客户只需要提供需要更改的资源属性），不安全但幂等；</li>
+        <li>DELETE：删除当前资源，幂等；</li>
+        <li>OPTIONS：获取当前资源所支持的方法列表；</li>
+        <li>HEAD：仅获取报头信息，不包含资源本身的内容。</li>
+    </ul>
+    <p>幂等表示任意多次操作所产生的影响均一次操作产生的影响相同，即使用相同参数重复操作，获取的结果也是相同的。</p>
+    <p>当 PUT 所指的资源还不存在时，其功能上和 POST 是极为相似的，唯一的不同是 PUT 预先知道了资源的地址，所以多次操作时，均指向同一地址。而 POST 则会每次操作都添加一条新资源；当 PUT 所指的资源存在时，其功能与 PATCH 相似，都为修改资源内容，只不过 PUT 要求修改资源的所有数据，而 PATCH 只修改资源的部分数据。所以 PUT 在不同的情况下，分别可以扮演 POST 和 PATCH 两种角色。</p>
+    <p>用户在分析一个 API 时，可能会用到 HEAD 和 OPTIONS 方法，但是现实中，很少有哪些应用是真正去实现这两个方法的，开发者可根据自身情况看是否需要提供该接口。</p>
+</section>
+
+<section>
+    <h2>状态码</h2>
+    <p>完整的状态码可参考：<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">这里</a>。这里列出几个常有的状态值：</p>
+    <ul>
+        <li>200：[GET] 服务器成功返回用户请求的数据；</li>
+        <li>201：[POST] 用户成功创建一个新的资源；</li>
+        <li>204：[DELETE, PUT] 服务器无需返回任何内容；</li>
+        <li>400：提交的数据不符合要求；</li>
+        <li>401：登录信息验证不通过；</li>
+        <li>404：未的到该资源；</li>
+        <li>500：服务端错误。</li>
+    </ul>
+</section>
+
+<section>
+    <h2>错误处理</h2>
+    <p>HTTP 状态码本身就是一套完善的错误描述机制，状态码相当于错误 ID，返回内容相当于错误内容描述。当然对于一个应用系统来，这些有点简单了，所以一般我们都会做一套符合自己需求的错误描述机制，市面上比较常见的方法就是返回一个固定的数据结构来描述具体的错误内容，比如：</p>
+    <pre><code class="language-json">{
+    "id": 10001,
+    "message": "用户已经存在"
+}</code></pre>
+    <p>当然我们也可以直接扩展 HTTP 状态码来达到相同的目的。比如我们可以将400的状态码进行细化 4001 的状态码时，表示用户已经存在， 4002 表示用户名非法。</p>
+</section>
+
+<section>
+    <h2>其它</h2>
+    <ol>
+    <li>在条件允许的情况下，尽量启用 HTTPS 协议。</li>
+    <li>将 API 部署到专门的域名下，比如：<samp>https://api.caixw.io</samp>。当然如果接口够简单，且不会有扩展的可能，也可以直接放在主域名下：<samp>https://caixw.io/api/</samp></li>
+    <li>使用 JSON 作为数据交换的格式。JSON 是比 XML 更加轻便的数据交互格式，若没有特殊原因，建议使用 JSON 作为数据交换格式，当然如果你有条件，也可两种格式都提供；</li>
+    <li>输出格式化之后的数据；</li>
+    <li>启用gzip。</li>
+    </ol>
+</section>

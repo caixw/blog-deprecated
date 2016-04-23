@@ -32,3 +32,10 @@
     <section>
     <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> 基于 TCP 的一种网络传输协议。</p>
     </section>
+    
+- slug: api
+  title: API
+  content: >
+    <section>
+    <p>应用程序接口</p>
+    </section>
