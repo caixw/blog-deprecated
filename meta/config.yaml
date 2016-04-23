@@ -7,6 +7,7 @@ uptime: 2016-03-06T00:00:01+0800
 pageSize: 20
 longDateFormat: 2006-01-02 15:04
 shortDateFormat: 2006-01-02
+beian: 	浙ICP备16000327号-1
 theme: default
 
 author:
