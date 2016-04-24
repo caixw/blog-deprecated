@@ -23,7 +23,7 @@ $('#top').on('click', function(){
         if (height <= 0){
             window.clearInterval(tick);
         }
-    },10);
+    }, 10);
 
     return false;
 });
