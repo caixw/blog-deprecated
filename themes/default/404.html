@@ -3,6 +3,58 @@
     <head>
         <meta charset="utf-8" />
         <title>page not found</title>
+        <style>
+            body{
+                text-align:center;
+            }
+            .container{
+                width:20rem;
+                margin:auto;
+                text-align:left;
+                margin-top:5rem;
+            }
+            p{
+                margin:0
+            }
+            .line-1{
+                font-size:6rem;
+                font-weight:bold;
+            }
+            .line-2{
+                font-size:2rem;
+            }
+
+            .line-3{
+                margin-top:2rem;
+                display:block;
+            }
+            .line-3 input{
+                font-size:1.1rem;
+                width:18rem;
+                outline:none;
+                border:1px solid #ccc;
+                padding:.2rem;
+            }
+
+            .line-4{
+                margin-top:1rem;
+            }
+            .line-4 a{
+                text-decoration:none;
+                text-color:#ccc;
+            }
+        </style>
     </head>
-    <body>404</body>
+    <body>
+        <div class="container">
+            <p class="line-1">404!</p>
+            <p class="line-2">PAGE NOT FOUND</p>
+            <form class="line-3" method="GET" action="https://caixw.io/search.html">
+                <input type="search" name="q" placeholder="请输入搜索内容" />
+            </form>
+            <p class="line-4">
+                <a href="/">首页</a>
+            </p>
+        </div><!-- end .container -->
+    </body>
 </html>
