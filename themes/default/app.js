@@ -12,6 +12,18 @@ $(window).on('scroll', function(){
 
 // 滚动到顶部
 $('#top').on('click', function(){
-    window.scrollTo(0, 0);
+    var times = 20;
+    var height = $('#top').offset().top;
+    var offset = height / times;
+
+    var tick = window.setInterval(function(){
+        height -= offset;
+        window.scrollTo(0, height);
+
+        if (height <= 0){
+            window.clearInterval(tick);
+        }
+    },10);
+
     return false;
 });
