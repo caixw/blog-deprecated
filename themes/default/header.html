@@ -21,7 +21,7 @@
         {{if .Keywords}}<meta name="keywords" content="{{.Keywords}}" itemprop="keywords" />{{end}}
         {{if .Description}}
         <meta name="description" content="{{.Description}}" itemprop="description" />
-        <meta property="og:description" content="{{.Description}}"/>
+        <meta property="og:description" content="{{.Description}}" />
         {{end}}
         <link rel="stylesheet" href="{{"default/style.css"|themeURL}}" />
         <link rel="search" type="application/opensearchdescription+xml" href="{{if .Root}}{{.Root}}{{end}}/opensearch.xml" />
