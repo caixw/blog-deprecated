@@ -1,0 +1,141 @@
+<section>
+<p>JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问<a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。</p>
+</section>
+
+<section>
+    <h2>结构</h2>
+    <p>一个 JWT 由三段 base64 统码的字符串通过点号(.)组合而成，看起来像这个样子：<samp><span>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span>.<span style="color:#03a9f4">eyJpc3MiOiJjYWl4dyIsInN1YiI6InRlc3Qgand0IiwiZXhwIjoxNDYyNDU5MzUxLCJ1aWQiOjEwMjQsInR5cGUiOjF9</span>.<span>y2TytagRDbHI-uQrsMqae2FD5OxqAAFbKp-8rYB2k0I</span></samp>，其中前两段是两个 JSON 结构体的 base64 编码，第三段为对前两段编码的再次编码，起到验证的作用，大致算法可以理解成以下样子：</p>
+    <code>token := base64(header) + base64(payload) + base64(signature)</code>。
+
+    <section>
+    <h3>header</h3>
+        <p>Header 为一个 JSON 结构，定义了 JWT 使用的 Token 类型和加密方法，经过 base64 编码后组成 JWT 的第一部分。其结构如下：</p>
+        <pre><code class="language-json">{
+    "typ":"JWT",
+    "alg":"HS256"
+}</code></pre>
+    <p>对其进行 base64 编码之后，得到以下字符串:<samp><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</code></samp>。</p>
+    </section>
+
+    <section>
+        <h3>Payload</h3>
+        <p>Payload 是 JWT 的核心部分，包含了描述 JWT 的重要信息。也是一个 JSON 数据，字段可以根据用户的需求自定义，只要保证字段名唯一就行。当然官方也定义了一些可能会经常用到的内容，所有这些字段都是可选的，Payload的值是没有加密的，所以不要在里面包含一些敏感信息。</p>
+
+        <p>一些官方定义的字段：</p>
+        <ul>
+            <li>iss:给谁的，可以是一个 URL；</li>
+            <li>sub:主题；</li>
+            <li>exp:过期时间</li>
+        </ul>
+        <pre><code class="language-json">{
+    "iss": "caixw",
+    "sub": "test jwt",
+    "exp": 1462459351,
+    "uid": 1024,
+    "type":1
+}</code></pre>
+<p>编码之后，会得到：<samp><code>eyJpc3MiOiJjYWl4dyIsInN1YiI6InRlc3Qgand0IiwiZXhwIjoxNDYyNDU5MzUxLCJ1aWQiOjEwMjQsInR5cGUiOjF9</code></samp></p>
+    </section>
+
+    <section>
+        <h3>Signature</h3>
+        <p>Signature 是对前两段编码的一个签名验证，用于验证 Token 是否有效果，是否被篡改过等。其大致的算法为：将前两段编码通过点号(.)拼接起来，然后对其进行一次 base64 编码。</p>
+        <pre><code class="language-markup">header := base64(headerJSON)
+payload := base64(payloadJSON)
+content := header + "." + payload
+signature := base64(content)</code></pre>
+    <p>计算之后会得到以下字符串：<samp><code>y2TytagRDbHI-uQrsMqae2FD5OxqAAFbKp-8rYB2k0I</code></samp></p>
+    </section>
+
+    <p>之后将三段字符串用点号(.)进行拼接，就得到一个完整的 JWT 了：<samp><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjYWl4dyIsInN1YiI6InRlc3Qgand0IiwiZXhwIjoxNDYyNDU5MzUxLCJ1aWQiOjEwMjQsInR5cGUiOjF9.y2TytagRDbHI-uQrsMqae2FD5OxqAAFbKp-8rYB2k0I</code></sapm></p>
+
+    <p>JWT 是 URL Safe 的，所以对进行 base64 编码的时候，应该使用 <code>base64.RawURLEncoding</code>对其进行编码，而不是<code>base64.RawStdEncoding</code>。</p>
+</section>
+
+<section>
+    <h2>简单的实现</h2>
+    <p>这是一个简单的 Go 实现版本，其它语言也大同小异。</p>
+    <pre class="line-numbers"><code class="language-go">// Copyright 2016 by caixw, All rights reserved.
+// Use of this source code is governed by a MIT
+// license that can be found in the LICENSE file.
+
+package main
+
+import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/base64"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"strings"
+)
+
+const secret = "a;/dkfwer"
+
+type Header struct {
+	Type      string `json:"typ"`
+	Algorithm string `json:"alg"`
+}
+
+func (h *Header) Base64() string {
+	data, err := json.Marshal(h)
+	if err != nil {
+		panic(err)
+	}
+
+	return base64.RawURLEncoding.EncodeToString(data)
+}
+
+type Claims struct {
+	Issuer     string `json:"iss,omitempty"`
+	Subject    string `json:"sub,omitempty"`
+	Expiration int64  `json:"exp,omitempty"`
+	UID        int64  `json:"uid"`
+	Type       int64  `json:"type"`
+}
+
+func (c *Claims) Base64() string {
+	data, err := json.Marshal(c)
+	if err != nil {
+		panic(err)
+	}
+
+	return base64.RawURLEncoding.EncodeToString(data)
+}
+
+// 根据算法生成签名
+func Signature(h *Header, c *Claims) (string, error) {
+	content := h.Base64() + "." + c.Base64()
+
+	switch strings.ToLower(h.Algorithm) {
+	case "hs256":
+		h := hmac.New(sha256.New, []byte(secret))
+		h.Write([]byte(content))
+		return content + "." + base64.RawURLEncoding.EncodeToString(h.Sum(nil)), nil
+	default:
+		return "", errors.New("不支持的加密算法")
+	}
+}
+
+func main() {
+	h := &Header{
+		Type:      "JWT",
+		Algorithm: "HS256",
+	}
+
+	c := &Claims{
+		Issuer:     "caixw",
+		Subject:    "test jwt",
+		Expiration: 1462459351,
+		UID:        1024,
+		Type:       1,
+	}
+
+	token, err := Signature(h, c)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(token)
+}</code></pre>
+</section>
