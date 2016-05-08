@@ -19,6 +19,7 @@ menus:
     title: 标签
     text: 标签
     icon: tags
+
   - url: /posts/2016/about.html
     title: 关于
     text: 关于
@@ -26,12 +27,10 @@ menus:
 
 atom:
     url: /atom.xml
-    title: atom
     size: 20
 
 rss:
     url: /rss.xml
-    title: RSS
     size: 20
 
 sitemap:
