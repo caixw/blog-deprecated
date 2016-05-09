@@ -18,7 +18,7 @@
     </section>
 
     <section>
-        <h3>Payload</h3>
+        <h3>Payload(Claims)</h3>
         <p>Payload 是 JWT 的核心部分，包含了描述 JWT 的重要信息。也是一个 JSON 数据，字段可以根据用户的需求自定义，只要保证字段名唯一就行。当然官方也定义了一些可能会经常用到的内容，所有这些字段都是可选的，Payload的值是没有加密的，所以不要在里面包含一些敏感信息。</p>
 
         <p>一些官方定义的字段：</p>
@@ -49,7 +49,7 @@ signature := base64(content)</code></pre>
 
     <p>之后将三段字符串用点号(.)进行拼接，就得到一个完整的 JWT 了：<samp><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjYWl4dyIsInN1YiI6InRlc3Qgand0IiwiZXhwIjoxNDYyNDU5MzUxLCJ1aWQiOjEwMjQsInR5cGUiOjF9.y2TytagRDbHI-uQrsMqae2FD5OxqAAFbKp-8rYB2k0I</code></sapm></p>
 
-    <p>JWT 是 URL Safe 的，所以对进行 base64 编码的时候，应该使用 <code>base64.RawURLEncoding</code>对其进行编码，而不是<code>base64.RawStdEncoding</code>。</p>
+    <p>JWT 是 URL Safe 的，所以对进行 base64 编码的时候，应该使用 <code>base64.RawURLEncoding</code>对其进行编码，而不是 <code>base64.RawStdEncoding</code>。</p>
 </section>
 
 <section>
@@ -119,12 +119,12 @@ func Signature(h *Header, c *Claims) (string, error) {
 }
 
 func main() {
-	h := &Header{
+	h := &amp;Header{
 		Type:      "JWT",
 		Algorithm: "HS256",
 	}
 
-	c := &Claims{
+	c := &amp;Claims{
 		Issuer:     "caixw",
 		Subject:    "test jwt",
 		Expiration: 1462459351,

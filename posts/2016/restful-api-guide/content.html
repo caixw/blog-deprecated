@@ -38,7 +38,7 @@
     <p>使用 GET 获取数据时，当数据量过大时，并不是所有数据都是用户需要一次获取的，这时候在服务端对结果进行过滤、排序、分页、查询等功能再返回会是一个比较友好的操作。这些功能应该通过 URL 的查询参数实现。参数值应该尽量避免无意义的值，比如 <samp>state=1</samp> 从开发者的角度来说，或许可以省略好多的工作量，但是从使用者的角度来说，很难理解这个值 1 代码的是什么意思，当 state 有许多的不同的值时，结果会更加糟糕，所以给出一个确定的值：<samp>state=lock</samp>，会是一个好习惯。</p>
     <ul>
         <li><samp>GET https://api.caixw.io/users?state=lock</samp>只获取锁定状态的用户列表；</li>
-        <li><samp>GET https://api.caixw.io/users?state=lock&size=20</samp>只获取锁定状态的用户列表，最多显示20条记录；</li>
+        <li><samp>GET https://api.caixw.io/users?state=lock&size=20</samp>只获取锁定状态的用户列表，最多显示 20 条记录；</li>
         <li><samp>GET https://api.caixw.io/users?sort=created,id</samp>按 created 和 id 字段排序；</li>
     </ul>
 </section>
@@ -55,7 +55,7 @@
         <li>OPTIONS：获取当前资源所支持的方法列表；</li>
         <li>HEAD：仅获取报头信息，不包含资源本身的内容。</li>
     </ul>
-    <p>幂等表示任意多次操作所产生的影响均一次操作产生的影响相同，即使用相同参数重复操作，获取的结果也是相同的。</p>
+    <p>幂等表示任意多次操作所产生的影响与一次操作产生的影响相同，即使用相同参数重复操作，获取的结果也是相同的。</p>
     <p>当 PUT 所指的资源还不存在时，其功能上和 POST 是极为相似的，唯一的不同是 PUT 预先知道了资源的地址，所以多次操作时，均指向同一地址。而 POST 则会每次操作都添加一条新资源；当 PUT 所指的资源存在时，其功能与 PATCH 相似，都为修改资源内容，只不过 PUT 要求修改资源的所有数据，而 PATCH 只修改资源的部分数据。所以 PUT 在不同的情况下，分别可以扮演 POST 和 PATCH 两种角色。</p>
     <p>用户在分析一个 API 时，可能会用到 HEAD 和 OPTIONS 方法，但是现实中，很少有哪些应用是真正去实现这两个方法的，开发者可根据自身情况看是否需要提供该接口。</p>
 </section>
