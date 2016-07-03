@@ -12,11 +12,11 @@
     <p>Vim 是从 vi 发展出来的一个高度可定制的文本编辑器。通过插件可实现代码补全、编译等大部分 IDE 功能，在程序员中被广泛使用。是类 Unix 系统用户最喜欢的两大编辑器之一。</p>
     </section>
 
-- slug: osx
-  title: OSX
+- slug: macos
+  title: macOS
   content: >
     <section>
-    <p>OSX 是苹果公司推出的类 UNIX 系统，是其公司 Mac 系列产品的预装该操作系统。</p>
+    <p>macOS 是苹果公司推出的类 UNIX 系统，是其公司 Mac 系列产品的预装该操作系统。由 2016 年 3 月从 OSX 更名为 macOS。</p>
     </section>
 
 - slug: restful

@@ -2,7 +2,7 @@
 <OpenSearchDescription xmlns="http://a9.com/-/pec/opensearch/1.1/">
     <InputEncoding>UTF-8</InputEncoding>
     <ShortName>caixw.io</ShortName>
-    <Description>在caixw.io上搜索内容</Description>
+    <Description>在 caixw.io 上搜索内容</Description>
     <Image height="16" width="16" type="image/x-icon">https://caixw.io/favicon.ico</Image>
     <Url type="text/html" method="get" template="https://caixw.io/search.html?q={searchTerms}" />
 </OpenSearchDescription>
