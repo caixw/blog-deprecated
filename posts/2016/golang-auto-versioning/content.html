@@ -3,7 +3,7 @@
 </section>
 
 <section>
-    <p>下面是一段简单的代码，用来作为示例，除了编译日期之外，还指了一个 commit hash，用于记录最后的提交 ID：</p>
+    <p>下面是一段简单的代码，用来作为示例，除了编译日期之外，还指定了一个 commit hash，用于记录最后的提交 ID：</p>
     <pre><code class="language-go">// Copyright 2016 by caixw, All rights reserved.
 // Use of this source code is governed by a MIT
 // license that can be found in the LICENSE file.
@@ -43,8 +43,10 @@ func main() {
     </code></pre>
 
     <p>下面是相对应的一个简单 shell 脚本，用于编译代码：</p>
-    <pre><code class="language-shell">buildDate=$(date -u '+%Y%m%d')
+    <pre><code class="language-shell"># 获取两个参数变量，等号两端不要有空格
+buildDate=$(date -u '+%Y%m%d')
 hash=$(git rev-parse HEAD)
+
 go build  -ldflags "-X main.buildDate=${buildDate} -X main.commitHash=${hash}"
     </code></pre>
 
