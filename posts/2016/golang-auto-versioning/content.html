@@ -1,0 +1,62 @@
+<section>
+    <p>一般情况下，我会在发布程序时把编译的时期附在版本号里，按照 <a href="https://semver.org">semver</a> 的规则，一个版本号会是这样子：<samp>0.1.2+20161129</samp>，前三个字符相对来说改动比较少，但是最后的日期一天一变，如果采用手动改变代码中常的方式，就比较得麻烦。所以我会使用 shell 和 <samp>go build</samp> 命令的 <code>ldflags</code> 参数相结合，在每次编译时，自动更新这个个变量。</p>
+</section>
+
+<section>
+    <p>下面是一段简单的代码，用来作为示例，除了编译日期之外，还指了一个 commit hash，用于记录最后的提交 ID：</p>
+    <pre><code class="language-go">// Copyright 2016 by caixw, All rights reserved.
+// Use of this source code is governed by a MIT
+// license that can be found in the LICENSE file.
+
+package main
+
+import(
+    "flag"
+)
+
+const mainVersion = "1.2.3"
+
+var (
+    buildDate string
+    commitHash string
+)
+
+func main() {
+    v := flag.Bool("v", false, "显示版本号");
+    flag.Parse();
+
+    if *v {
+        version := mainVersion
+        if len(buildDate) > 0{
+            version += ("+"+buildDate)
+        }
+        fmt.Println("version:", version)
+
+        if len(commitHash) > 0{
+            fmt.Println("git commit hash:", commitHash)
+        }
+        return
+    }
+
+    // TODO
+}
+    </code></pre>
+
+    <p>下面是相对应的一个简单 shell 脚本，用于编译代码：</p>
+    <pre><code class="language-shell">buildDate=$(date -u '+%Y%m%d')
+hash=$(git rev-parse HEAD)
+go build  -ldflags "-X main.buildDate=${buildDate} -X main.commitHash=${hash}"
+    </code></pre>
+
+    
+</section>
+
+<section>
+    <p>关于 ldflags 参数：</p>
+    <ul>
+        <li>不能修改常量，只能是变量；</li>
+        <li>变量可以小写；</li>
+        <li>若不是 main 包，则需要指定全路径：<samp>go build -ldflags="-X github.com/caixw/gobuild/vars.xxx=$(date -u '+%Y%m%d')"</samp>；</li>
+        <li>可以同时指定多个，采用 <samp>"-X importpath.name=xxx -X importpath.name=XXX"</samp> 的形式</li>
+    </ul>
+</section>
