@@ -48,7 +48,10 @@ hash=$(git rev-parse HEAD)
 
 go build  -ldflags "-X main.buildDate=${buildDate} -X main.commitHash=${hash}"</code></pre>
 
-    
+<p>执行 <samp>./main</samp>，将会输出类似以下内容：</p>
+<pre><code class="language-bash">version:1.2.3+20161129
+git commit hash: 8b3632a2451edcd175939de6581315b9dde0fbd7
+</code></pre>
 </section>
 
 <section>
