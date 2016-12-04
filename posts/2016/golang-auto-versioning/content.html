@@ -39,16 +39,14 @@ func main() {
     }
 
     // TODO
-}
-    </code></pre>
+}</code></pre>
 
     <p>下面是相对应的一个简单 shell 脚本，用于编译代码：</p>
-    <pre><code class="language-shell"># 获取两个参数变量，等号两端不要有空格
+    <pre><code class="language-bash"># 获取两个参数变量，等号两端不要有空格
 buildDate=$(date -u '+%Y%m%d')
 hash=$(git rev-parse HEAD)
 
-go build  -ldflags "-X main.buildDate=${buildDate} -X main.commitHash=${hash}"
-    </code></pre>
+go build  -ldflags "-X main.buildDate=${buildDate} -X main.commitHash=${hash}"</code></pre>
 
     
 </section>
