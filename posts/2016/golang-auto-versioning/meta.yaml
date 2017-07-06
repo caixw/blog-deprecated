@@ -2,6 +2,7 @@ title: Go 的版本自动化
 path: content.html
 created: 2016-11-29T22:31:42+0800
 modified: 2016-12-04T23:53:31+0800
-tags: golang
+keywords: Go, 版本, 自动化
+tags: go
 summary: >
     Go 语言中如何自动生成版本号。

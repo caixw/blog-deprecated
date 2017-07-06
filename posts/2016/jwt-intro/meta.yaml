@@ -2,6 +2,7 @@ title: JWT的简单介绍
 path: content.html
 created: 2016-04-24T03:35:19+0800
 modified: 2016-05-05T23:19:48+0800
-tags: jwt,json,golang,base64
+keywords: jwt, JSON, Go, Base64
+tags: jwt,json,go,base64
 summary: >
     JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问<a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。
