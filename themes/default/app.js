@@ -5,9 +5,9 @@ $(document).ready(function(){
     Prism.plugins.autoloader.languages_path='//cdn.bootcss.com/prism/1.6.0/components/';
     Prism.highlightAll(false);
 
-    // 根据与页面顶部的距离，控制是否显示top按钮。
+    // 根据与页面顶部的距离，控制是否显示 top 按钮。
     $(window).on('scroll', function(){
-        var button = $('#top');
+        const button = $('#top');
         if($(document).scrollTop() > 30){
             button.fadeIn();
         }else{
@@ -17,11 +17,11 @@ $(document).ready(function(){
 
     // 滚动到顶部
     $('#top').on('click', function(){
-        var times = 20;
-        var height = $('#top').offset().top;
-        var offset = height / times;
+        const times = 20;
+        const height = $('#top').offset().top;
+        const offset = height / times;
 
-        var tick = window.setInterval(function(){
+        const tick = window.setInterval(function(){
             height -= offset;
             window.scrollTo(0, height);
 
@@ -32,5 +32,16 @@ $(document).ready(function(){
 
         return false;
     });
+
+
+    // 调整主题
+    const dark = parseBool(window.localStorage.getItem('dark'))
+    if (dark) {
+        const elems = $('html>head>link[data-dark]')
+        for (let elem of elems) {
+            const name = 'data-' + theme
+            $(elem).attr('href', $(elem).attr(name))
+        }
+    }
 
 }); // end $(document).ready()
