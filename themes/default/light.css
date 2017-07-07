@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+:root {
+    --background: #fff;
+
+    --appbar-background-select: #2a36b1;
+    --appbar-background: #455ede;
+    --appbar-foreground: #ebeaf6;
+
+    --post-background: #ebeaf6;
+    --post-foreground: #000;
+    --post-foreground-meta: #212121;
+
+    --divider-foreground: #f5f5f5;
+}
+
+footer {
+    --link-foreground: #ff80ab;
+}

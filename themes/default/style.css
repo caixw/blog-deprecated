@@ -1,157 +1,161 @@
 @charset "utf-8";
 
-/**
- max-width: :70rem;
- */
+/******************** vars */
+
+:root {
+    --width: 70rem;
+}
 
 /*********************** reset */
 
-body{
-    margin:0 auto;
-    background:#fff;
+body {
+    margin: 0 auto;
+    background: var(--background);
     font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;
 }
 
-a{
+a {
     text-decoration:none;
-    color:#00bcd4;
+    color: var(--link-foreground);
 }
-a:hover{
+
+a:hover {
     text-decoration:underline;
 }
 
-.clearfix{
-    clear:both;
+.clearfix {
+    clear: both;
 }
 
-.container{
-    max-width:70rem;
-    margin:auto;
-    text-align:left;
-    padding:0rem 1rem; /* 宽度小于max-width时，需要指定padding，否则排版会靠边 */
+.container {
+    max-width: var(--width);
+    margin: auto;
+    text-align: left;
+    padding: 0rem 1rem; /* 宽度小于 --width 时，需要指定 padding，否则排版会靠边 */
 }
 
 /* 调整图标，使其上下居中 */
-.fa{
+.fa {
     margin-top:0.1rem;
 }
 
 /*********** #header ************/
-#header{
-    box-shadow: 1px 1px #699cc8;
-    background: #f5f5f5;
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
+#header {
+    box-shadow: 1px 1px var(--appbar-background);
+    background: var(--appbar-background);
+    color: var(--appbar-foreground);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index:1000;
 }
 
-#header .item{
+#header .item {
+    font-size: 1.2rem;
     display: inline-block;
     border-bottom:1px solid transparent;
-    color:#212121;
-    padding:.5rem 1rem;
+    color: var(--appbar-foreground);
+    padding: 1rem 1rem;
 }
 
-#header .item.title{
-    padding-left:0;
-    text-decoration:none;
-    border-bottom:1px solid transparent;
+#header .item.title {
+    padding-left: 0;
+    text-decoration: none;
 }
 
-#header .item.title:hover{
-    border-bottom:1px solid transparent;
-}
-
-#header .item:hover{
-    border-bottom:1px solid #699cc8;
-    text-decoration:none;
+#header .item:hover {
+    text-decoration: none;
 }
 
 /******************* #footer **************/
-#footer{
-    border-top: 1px solid #699cc8;
-    padding:0.2rem 0rem;
-    background: #f5f5f5;
+#footer {
+    padding: 1rem 0rem;
+    background: var(--appbar-background);
+    color: var(--appbar-foreground);
     line-height: 2.3rem;
 }
 
-#footer p{
+#footer p {
     margin:0rem;
 }
 
 /************ #content *****************/
 
-#content{
-    margin-top:3rem;
+#content {
+    margin-top: 2rem;
     word-break: break-all;
 }
 
-#content>.container>.item{
-    margin:1rem 0rem;
+#content>.container>.item {
+    margin: 1rem 0rem;
 }
 
-#content .post .title{
-    font-size:2rem;
-    margin-bottom:0.2rem;
+#content .post .title a {
+    font-size: 2rem;
+    margin-bottom: .2rem;
+    color: var(--post-foreground);
 }
 
-#content .post .meta{
-    margin-bottom:.5rem;
+#content .post .meta {
+    margin-bottom: .5rem;
+    color: var(--post-foreground-meta);
 }
 
-#content .post .meta .item{
-    margin-right:.7rem;
+#content .post .meta .item {
+    margin-right: .7rem;
 }
 
-#content .post .meta .item a[rel=tag]{
-    margin-right:.5rem;
+#content .post .meta .item a[rel=tag] {
+    margin-right: .5rem;
+    color: var(--post-foreground-meta);
 }
 
-#content .post section>p{
+#content .post section>p {
     text-indent: 2em;
 }
 
 
-#content .posts .post{
-    border-bottom: 1px solid #f5f5f5;
+#content .posts .post {
+    border-bottom: 1px solid var(--divider-foreground);
 }
 
-#content .search{
+#content .search {
     margin-bottom:1rem;
 }
 
-#content .search input{
-    width:100%;
-    outline:none;
-    padding:0.2rem .5rem;
-    line-height:2rem;
-    border:1px solid #699cc8;
-    font-size:1.2rem;
+#content .search input {
+    width: 100%;
+    outline: none;
+    padding: .2rem .5rem;
+    line-height: 2rem;
+    border: none;
+    border-bottom: 1px solid var(--divider-foreground);
+    font-size: 1.2rem;
 }
 
-#content .tags{
-    margin-bottom:1rem;
+#content .tags {
+    margin-bottom: 1rem;
 }
 
-#content .tags .item{
-    margin-right:1rem;
+#content .tags .item {
+    margin-right: 1rem;
 }
 
-.pages-nav .next{
-    float:right;
+.pages-nav .next {
+    float: right;
 }
 
 /************ #top ************/
-#top{
+#top {
     position: fixed;
     right:2rem;
     bottom:5rem;
-    color:black;
+    color:var(--appbar-background);
 }
 
-#top:hover{
-    text-decoration:none;
-    color:#699cc8;
+#top:hover {
+    text-decoration: none;
+    color: var(--appbar-background-select);
 }
