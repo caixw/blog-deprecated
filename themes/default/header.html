@@ -52,7 +52,7 @@
             {{range .Menus -}}
             <a class="item" href="{{.URL}}">
                 {{if .Icon -}}
-                <i class="fa fa-{{.Icon}}"></i>
+                <i class="fa fa-{{.Icon}}" aria-hidden="true"></i>
                 {{- end}}
                 {{.Text}}
             </a>
