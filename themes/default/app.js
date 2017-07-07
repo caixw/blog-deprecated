@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
     // 语法高亮
-    Prism.plugins.autoloader.languages_path='//cdn.bootcss.com/prism/1.5.1/components/';
+    Prism.plugins.autoloader.languages_path='//cdn.bootcss.com/prism/1.6.0/components/';
     Prism.highlightAll(false);
 
     // 根据与页面顶部的距离，控制是否显示top按钮。
