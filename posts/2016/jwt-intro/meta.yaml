@@ -1,8 +1,8 @@
-title: JWT的简单介绍
+title: JWT 的简单介绍
 path: content.html
 created: 2016-04-24T03:35:19+0800
 modified: 2017-07-08T11:50:33+0800
-keywords: jwt, JSON, Go, Base64
+keywords: JWT, JSON, Go, Base64
 tags: jwt,json,go,base64
 summary: >
     <section>
