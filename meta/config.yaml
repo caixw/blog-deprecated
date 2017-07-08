@@ -25,6 +25,11 @@ menus:
     text: 关于
     icon: info-circle
 
+  - url: https://github.com/caixw
+    title: Github
+    text: Github
+    icon: github
+
 atom:
     url: /atom.xml
     size: 20
