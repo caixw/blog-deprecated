@@ -48,7 +48,6 @@
             <a class="item title" title="{{.Subtitle}}" href="{{- if .Root}}{{.Root}}{{else}}/{{end -}}">
                 <span itemprop="name">{{.SiteName}}</span>
             </a>
-            <meta itemprop="headline" content="{{.Subtitle}}" />
             {{range .Menus -}}
             <a class="item" href="{{.URL}}">
                 {{if .Icon -}}
