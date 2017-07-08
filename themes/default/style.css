@@ -4,7 +4,7 @@
 
 :root {
     /* 页面宽度 */
-    --width: 70rem;
+    --max-width: 70rem;
 }
 
 /*********************** reset */
@@ -28,13 +28,6 @@ a:hover {
     clear: both;
 }
 
-.container {
-    width: var(--width);
-    margin: auto;
-    text-align: left;
-    padding: 1rem 1rem;
-}
-
 /* 调整图标，使其上下居中 */
 .fa {
     margin-top: .1rem;
@@ -47,11 +40,18 @@ a:hover {
     color: var(--appbar-foreground);
     position: -webkit-sticky;
     position: sticky;
-    display: flex;
     top: 0;
     left: 0;
     width: 100%;
     z-index:1000;
+}
+
+#header nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 0rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #header .item {
@@ -59,15 +59,11 @@ a:hover {
     border-bottom:1px solid transparent;
     color: var(--appbar-foreground);
     padding: 1rem 1rem;
+    text-decoration: none;
 }
 
 #header .item.title {
     padding-left: 0;
-    text-decoration: none;
-}
-
-#header .item:hover {
-    text-decoration: none;
 }
 
 /******************* #footer **************/
@@ -75,6 +71,12 @@ a:hover {
     background: var(--appbar-background);
     color: var(--appbar-foreground);
     line-height: 2.3rem;
+}
+
+#footer .container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem 1rem;
 }
 
 #footer p {
@@ -89,6 +91,12 @@ a:hover {
     color: var(--post-foreground);
 }
 
+#content .container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem 1rem;
+}
+
 #content>.container>.item {
     margin: 1rem 0rem;
 }
@@ -100,6 +108,7 @@ a:hover {
 
 #content .post .meta {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: .5rem;
     color: var(--post-foreground-meta);
 }
