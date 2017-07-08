@@ -5,4 +5,6 @@ modified: 2016-12-04T23:53:31+0800
 keywords: Go, 版本, 自动化
 tags: go
 summary: >
+    <section>
     Go 语言中如何自动生成版本号。
+    </section>

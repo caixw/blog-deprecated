@@ -1,5 +1,5 @@
 <section>
-<p>JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问<a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。</p>
+<p>JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问 <a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。</p>
 </section>
 
 <section>
@@ -19,7 +19,7 @@
 
     <section>
         <h3>Payload(Claims)</h3>
-        <p>Payload 是 JWT 的核心部分，包含了描述 JWT 的重要信息。也是一个 JSON 数据，字段可以根据用户的需求自定义，只要保证字段名唯一就行。当然官方也定义了一些可能会经常用到的内容，所有这些字段都是可选的，Payload的值是没有加密的，所以不要在里面包含一些敏感信息。</p>
+        <p>Payload 是 JWT 的核心部分，包含了描述 JWT 的重要信息。也是一个 JSON 数据，字段可以根据用户的需求自定义，只要保证字段名唯一就行。当然官方也定义了一些可能会经常用到的内容，所有这些字段都是可选的，Payload 的值是没有加密的，所以不要在里面包含一些敏感信息。</p>
 
         <p>一些官方定义的字段：</p>
         <ul>

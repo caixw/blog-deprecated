@@ -5,4 +5,6 @@ modified: 2016-04-24T02:25:26+0800
 keywords: RESTful, API, HTTP, RESTful-API
 tags: restful,http,api
 summary: >
+    <section>
     RESTful API 为网络应用程序设计提供了一套统一、合理的风格。本文从实践的角度出发，讨论 RESTful API 设计上的一些细节，探讨如何设计出一套好用、合理、精炼的 API。
+    </section>
