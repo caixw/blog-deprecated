@@ -3,6 +3,7 @@
 /******************** vars */
 
 :root {
+    /* 页面宽度 */
     --width: 70rem;
 }
 
@@ -28,10 +29,10 @@ a:hover {
 }
 
 .container {
-    max-width: var(--width);
+    width: var(--width);
     margin: auto;
     text-align: left;
-    padding: 0rem 1rem; /* 宽度小于 --width 时，需要指定 padding，否则排版会靠边 */
+    padding: 1rem 1rem;
 }
 
 /* 调整图标，使其上下居中 */
@@ -46,6 +47,7 @@ a:hover {
     color: var(--appbar-foreground);
     position: -webkit-sticky;
     position: sticky;
+    display: flex;
     top: 0;
     left: 0;
     width: 100%;
@@ -54,7 +56,6 @@ a:hover {
 
 #header .item {
     font-size: 1.2rem;
-    display: inline-block;
     border-bottom:1px solid transparent;
     color: var(--appbar-foreground);
     padding: 1rem 1rem;
@@ -71,7 +72,6 @@ a:hover {
 
 /******************* #footer **************/
 #footer {
-    padding: 1rem 0rem;
     background: var(--appbar-background);
     color: var(--appbar-foreground);
     line-height: 2.3rem;
@@ -99,6 +99,7 @@ a:hover {
 }
 
 #content .post .meta {
+    display: flex;
     margin-bottom: .5rem;
     color: var(--post-foreground-meta);
 }
@@ -150,8 +151,8 @@ a:hover {
 /************ #top ************/
 #top {
     position: fixed;
-    right:2rem;
-    bottom:7rem;
+    right: 2rem;
+    bottom: 7rem;
     color:var(--top-foreground);
 }
 

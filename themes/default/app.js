@@ -18,7 +18,7 @@ $(document).ready(function(){
     // 滚动到顶部
     $('#top').on('click', function(){
         const times = 20;
-        const height = $('#top').offset().top;
+        let height = $('#top').offset().top;
         const offset = height / times;
 
         const tick = window.setInterval(function(){
