@@ -4,7 +4,7 @@
     <article class="post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
         <header>
             <h2 class="title">
-                <a href="{{.Permalink}}" itemprop="url">
+                <a href="{{.Permalink}}" itemprop="url" type="text/html">
                     <span itemprop="name headline">{{.Title}}<span>
                 </a>
             </h2>
@@ -22,7 +22,7 @@
                 <span class="item">
                     <i title="关联标签" class="fa fa-tags" aria-hidden="true"></i>
                     {{range .Tags}}
-                    <a href="{{.Permalink}}" rel="tag"><span itemprop="keywords">{{.Title}}</span></a>
+                    <a href="{{.Permalink}}" rel="tag" type="text/html"><span itemprop="keywords">{{.Title}}</span></a>
                     {{end}}
                 </span>
 

@@ -33,19 +33,4 @@ $(document).ready(function(){
         return false;
     });
 
-
-    // 调整主题
-    const dark = window.localStorage.getItem('dark')
-    if (dark) {
-        const elems = $('html>head>link[data-dark]')
-        for (let elem of elems) {
-            $(elem).attr('href', $(elem).attr('data-dark'))
-        }
-    } else {
-        const elems = $('html>head>link[data-light]')
-        for (let elem of elems) {
-            $(elem).attr('href', $(elem).attr('data-light'))
-        }
-    }
-
 }); // end $(document).ready()
