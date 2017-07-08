@@ -12,7 +12,7 @@ theme: default
 
 author:
     name: caixw
-    url: https://caixw.io
+    url: https://caixw.io # 不包含最后的斜杠
 
 menus:
   - url: /tags.html

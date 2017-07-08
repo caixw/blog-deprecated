@@ -21,6 +21,13 @@
     <p>最常用的编码方式之一，有固定的码表，标准码表用到了 <code>/</code> 和 <code>+</code>，所以不能用于 URL 中，会被二次编码。不过也有针对 URL、正则表达式以及其它特殊情况下的 base64 编码。</p>
     </section>
 
+- slug: git
+  title: Git
+  content: >
+    <section>
+        <p>一种版本控制系统。</p>
+    </section>
+
 - slug: go
   title: Go
   content: >

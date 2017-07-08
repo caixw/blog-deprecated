@@ -51,6 +51,10 @@
                 {{.Text}}
             </a>
             {{end}}
+
+            <form action="/search.html" method="GET" class="item search">
+                <input autocomplete="off" type="search" name="q" value="{{.Q}}" placeholder="查询内容" />
+            </form>
         </nav>
     </header>
 

@@ -21,7 +21,7 @@ a {
 }
 
 a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
 .clearfix {
@@ -31,6 +31,22 @@ a:hover {
 /* 调整图标，使其上下居中 */
 .fa {
     margin-top: .1rem;
+}
+
+:-ms-input-placeholder{
+    color: var(--placeholder-foreground);
+}
+
+::-ms-input-placeholder{
+    color: var(--placeholder-foreground);
+}
+
+::-moz-placeholder{
+    color: var(--placeholder-foreground);
+}
+
+::-webkit-input-placeholder {
+    color: var(--placeholder-foreground);
 }
 
 /*********** #header ************/
@@ -65,6 +81,21 @@ a:hover {
 
 #header .item.title {
     padding-left: 0;
+}
+
+#header .item.search {
+    flex-grow: 2;
+}
+
+#header .search input {
+    outline: none;
+    border: none;
+    color: var(--appbar-foreground);
+    background: var(--appbar-background);
+    border-bottom: 1px solid var(--appbar-foreground);
+    font-size: 1.2rem;
+    float: right;
+    width: 300px;
 }
 
 /******************* #footer **************/
@@ -127,23 +158,8 @@ a:hover {
     text-indent: 2em;
 }
 
-
 #content .posts .post {
     border-bottom: 1px solid var(--divider-foreground);
-}
-
-#content .search {
-    margin-bottom:1rem;
-}
-
-#content .search input {
-    width: 100%;
-    outline: none;
-    padding: .2rem .5rem;
-    line-height: 2rem;
-    border: none;
-    border-bottom: 1px solid var(--appbar-background);
-    font-size: 1.2rem;
 }
 
 #content .tags {
