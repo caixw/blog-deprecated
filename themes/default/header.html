@@ -20,8 +20,7 @@
         {{if .Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Atom.Title}}" href="{{.Atom.URL}}" />{{end}}
         {{if .Keywords}}<meta name="keywords" content="{{.Keywords}}" itemprop="keywords" />{{end}}
         {{if .Description}}
-        <meta name="description" content="{{.Description}}" itemprop="description" />
-        <meta property="og:description" content="{{.Description}}" />
+        <meta name="description" content="{{.Description|strip}}" itemprop="description" property="og:description" />
         {{end}}
         <link rel="stylesheet" href="{{"default/light.css"|themeURL}}" title="light" />
         <link rel="stylesheet" href="{{"default/dark.css"|themeURL}}" title="dark" />

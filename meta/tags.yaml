@@ -1,3 +1,5 @@
+# 所有的标签定义在此处，为方便查找，标签都按字符顺序排列
+
 - slug: default
   title: 默认
   content: >
@@ -5,11 +7,53 @@
     <p>系统默认标签</p>
     </section>
 
-- slug: vim
-  title: Vim
+- slug: api
+  title: API
   content: >
     <section>
-    <p>Vim 是从 vi 发展出来的一个高度可定制的文本编辑器。通过插件可实现代码补全、编译等大部分 IDE 功能，在程序员中被广泛使用。是类 Unix 系统用户最喜欢的两大编辑器之一。</p>
+    <p>API 是 Application Programming Interface（应用程序接口）的缩写。</p>
+    </section>
+
+- slug: base64
+  title: base64
+  content: >
+    <section>
+    <p>最常用的编码方式之一，有固定的码表，标准码表用到了 <code>/</code> 和 <code>+</code>，所以不能用于 URL 中，会被二次编码。不过也有针对 URL、正则表达式以及其它特殊情况下的 base64 编码。</p>
+    </section>
+
+- slug: go
+  title: Go
+  content: >
+    <section>
+        <p>Go 是由 Google 开发的编种语言。拥有比 C++ 更快速的编译速度，以及更安全、简单的并行开发支持。</p>
+    </section>
+
+- slug: html
+  title: HTML
+  content: >
+    <section>
+    <p><abbr title="Hypertext Markup Language">HTML</abbr> 超级文本标记语言，是用来制作网页的标记语言，由 W3C 维护。</p>
+    </section>
+
+- slug: http
+  title: HTTP
+  content: >
+    <section>
+    <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> 基于 TCP 的一种网络传输协议。</p>
+    </section>
+
+- slug: json
+  title: JSON
+  content: >
+    <section>
+    <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
+    </section>
+
+- slug: jwt
+  title: JWT
+  content: >
+    <section>
+    <p>JSON Web Token 是一种基于 Token 的认证授权机制。</p>
     </section>
 
 - slug: macos
@@ -26,44 +70,9 @@
     <p><abbr title="Representational State Transfer">REST</abbr> 最初由 <a href="https://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a> 于 <time>2000</time> 年的<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出，是一种直接应用于 HTTP 协议的软件架构设计风格，提供了相对统一的设计原则和约束条件。它简化了服务端与客户端之间的实现。</p>
     </section>
 
-- slug: http
-  title: HTTP
+- slug: vim
+  title: Vim
   content: >
     <section>
-    <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> 基于 TCP 的一种网络传输协议。</p>
-    </section>
-
-- slug: api
-  title: API
-  content: >
-    <section>
-    <p>API 是 Application Programming Interface（应用程序接口）的缩写。</p>
-    </section>
-
-- slug: jwt
-  title: JWT
-  content: >
-    <section>
-    <p>JSON Web Token 是一种基于 Token 的认证授权机制。</p>
-    </section>
-
-- slug: json
-  title: JSON
-  content: >
-    <section>
-    <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
-    </section>
-
-- slug: go
-  title: Go
-  content: >
-    <section>
-        <p>Go 是由 Google 开发的编种语言。拥有比 C++ 更快速的编译速度，以及更安全、简单的并行开发支持。</p>
-    </section>
-
-- slug: base64
-  title: base64
-  content: >
-    <section>
-    <p></p>
+    <p>Vim 是从 vi 发展出来的一个高度可定制的文本编辑器。通过插件可实现代码补全、编译等大部分 IDE 功能，在程序员中被广泛使用。是类 Unix 系统用户最喜欢的两大编辑器之一。</p>
     </section>

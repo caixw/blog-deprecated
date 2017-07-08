@@ -1,5 +1,5 @@
 <section>
-<p>JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问 <a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。</p>
+	<p>JSON Web Token 是一种基于 Token 的认证授权机制，本文对其实现原理做个简单的介绍。若要查看详细的相关信息，可以访问 <a href="https://jwt.io/">https://jwt.io/</a>，该网站还有各类语言实现的库，当然你也可以直接阅读其官方的<a href="https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">标准文档</a>。</p>
 </section>
 
 <section>
@@ -49,7 +49,7 @@ signature := base64(content)</code></pre>
 
     <p>之后将三段字符串用点号(.)进行拼接，就得到一个完整的 JWT 了：<samp><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjYWl4dyIsInN1YiI6InRlc3Qgand0IiwiZXhwIjoxNDYyNDU5MzUxLCJ1aWQiOjEwMjQsInR5cGUiOjF9.y2TytagRDbHI-uQrsMqae2FD5OxqAAFbKp-8rYB2k0I</code></sapm></p>
 
-    <p>JWT 是 URL Safe 的，所以对进行 base64 编码的时候，应该使用 <code>base64.RawURLEncoding</code>对其进行编码，而不是 <code>base64.RawStdEncoding</code>。</p>
+    <p>JWT 是 URL Safe 的，所以对进行 base64 编码的时候，应该使用 <code>base64.RawURLEncoding</code> 对其进行编码，而不是 <code>base64.RawStdEncoding</code>。</p>
 </section>
 
 <section>
