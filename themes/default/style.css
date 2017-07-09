@@ -185,3 +185,16 @@ a:hover {
     text-decoration: none;
     color: var(--appbar-background);
 }
+
+/**************** .post ***********/
+/* 包含文章内的一些常用格式定义 */
+
+.post table {
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.post table th, .post table td {
+    border: 1px solid var(--divider-foreground);
+    padding: .2rem .5rem;
+}
