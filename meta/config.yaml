@@ -29,6 +29,7 @@ menus:
     title: Github
     text: Github
     icon: github
+    rel: me
 
 atom:
     url: /atom.xml

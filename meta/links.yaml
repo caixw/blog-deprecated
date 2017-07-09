@@ -1,9 +1,35 @@
-# links
+# 友情链接，rel 属性支持以下内容
+#
+# friendship友情，只能选一个
+#  friend 好朋友（一起混的）
+#  acquaintance 熟人 （见面会打招会）
+#  contact 有联系过 （至少你知道如何联系到Ta）
+#  physical 直接接触
+#  met 在真实世界中遇见过
+#
+# professional 专业
+#  co-worker 共事（一起合作过）
+#  colleague 同事（与你共处同一专业领域）
+#
+# geographical 地理关系，只能选一个
+#  co-resident 同一区域（住同一个大院，同一个小区，同一个学校等等）
+#  neighbor 邻居
+#  family 家庭关系，只能选一个
+#  child 孩子
+#  parent 父母
+#  sibling 兄弟姐妹
+#  spouse 配偶
+#  kin 亲属
+#  romantic 恋爱关系
+#  muse 我的女神
+#  crush 我迷恋的
+#  date 约会中
+#  sweetheart 甜心
+#
+# identity 自我识别
+#  me 表示这个链接指向我的另一个节点（网站、网页等）
 
-- text: text0
-  url: url0
-  title: title0
-  icon: icon0
 
-
-
+- text: caixw
+  url: https://caixw.io
+  rel: me

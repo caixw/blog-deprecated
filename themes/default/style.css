@@ -118,7 +118,6 @@ a:hover {
 /************ #content *****************/
 
 #content {
-    margin-top: 2rem;
     word-break: break-all;
     color: var(--post-foreground);
 }

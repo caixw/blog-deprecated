@@ -1,7 +1,7 @@
 {{define "header" -}}
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans" itemscope itemtype="https://schema.org/Blog" xmlns:og="http://ogp.me/ns#">
-    <head itemscope itemtype="http://schema.org/WebSite">
+    <head itemscope itemtype="http://schema.org/WebSite" profile="http://gmpg.org/xfn/11">
         <meta charset="utf-8" itemprop="encoding" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +44,10 @@
                 <span itemprop="name">{{.SiteName}}</span>
             </a>
             {{range .Menus -}}
-            <a class="item" href="{{.URL}}">
+            <a class="item"
+            href="{{.URL}}"
+            {{- if .Title -}}title="{{- .Title -}}"{{- end -}}
+            {{- if .Rel -}}rel="{{- .Rel -}}"{{- end -}}>
                 {{if .Icon -}}
                 <i class="fa fa-{{.Icon}}" aria-hidden="true"></i>
                 {{- end}}
