@@ -5,6 +5,9 @@
 :root {
     /* 页面宽度 */
     --max-width: 70rem;
+
+    /* 定义手机的宽度 */
+    --phone-width: 600px;
 }
 
 /*********************** reset */
@@ -98,6 +101,14 @@ a:hover {
     width: 300px;
 }
 
+/* 600px 需要与 var(--phone-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
+@media (max-width: 600px) {
+  .search input {
+      width: 150px !important;
+  }
+}
+
+
 /******************* #footer **************/
 #footer {
     background: var(--appbar-background);
@@ -153,10 +164,6 @@ a:hover {
     color: var(--post-foreground-meta);
 }
 
-#content .post section>p {
-    text-indent: 2em;
-}
-
 #content .posts .post {
     border-bottom: 1px solid var(--divider-foreground);
 }
@@ -189,11 +196,20 @@ a:hover {
 /**************** .post ***********/
 /* 包含文章内的一些常用格式定义 */
 
+#content .post section>p {
+    text-indent: 2em;
+}
+
 .post table {
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+.post table th {
+    font-weight: 500;
+}
+
 .post table th, .post table td {
     border: 1px solid var(--divider-foreground);
     padding: .2rem .5rem;
