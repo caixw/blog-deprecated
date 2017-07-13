@@ -10,11 +10,11 @@ shortDateFormat: 2006-01-02
 beian: 	浙ICP备16000327号-1
 theme: default
 
-author:
+author: # 默认的作者信息
     name: caixw
     url: https://caixw.io # 不包含最后的斜杠
 
-menus:
+menus:  # 顶部的菜单栏内容
   - url: /tags.html
     title: 标签
     text: 标签
@@ -31,15 +31,15 @@ menus:
     icon: github
     rel: me
 
-atom:
+atom:  # atom 的配置，为空表示没有
     url: /atom.xml
     size: 20
 
-rss:
+rss:   # rss 的配置，为空表示没有
     url: /rss.xml
     size: 20
 
-sitemap:
+sitemap: # sitemap 的配置，为空表示没有
     url: /sitemap.xml
     enableTag: true
     tagPriority: 0.5
