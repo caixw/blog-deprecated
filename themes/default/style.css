@@ -36,11 +36,11 @@ a:hover {
     margin-top: .1rem;
 }
 
-:-ms-input-placeholder{
+:-ms-input-placeholder{ /* IE */
     color: var(--placeholder-foreground);
 }
 
-::-ms-input-placeholder{
+::-ms-input-placeholder{ /* Edge */
     color: var(--placeholder-foreground);
 }
 
@@ -49,6 +49,10 @@ a:hover {
 }
 
 ::-webkit-input-placeholder {
+    color: var(--placeholder-foreground);
+}
+
+::placeholder {
     color: var(--placeholder-foreground);
 }
 
@@ -64,6 +68,10 @@ a:hover {
     width: 100%;
     z-index:1000;
     padding-top: .4rem;
+}
+
+#header a {
+    color: var(--appbar-link-foreground);
 }
 
 #header nav {
@@ -99,6 +107,7 @@ a:hover {
     font-size: 1.2rem;
     float: right;
     width: 300px;
+    -webkit-appearance: textfield; /* safari */
 }
 
 /* 600px 需要与 var(--phone-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
@@ -114,6 +123,10 @@ a:hover {
     background: var(--appbar-background);
     color: var(--appbar-foreground);
     line-height: 2.3rem;
+}
+
+#footer a {
+    color: var(--appbar-link-foreground);
 }
 
 #footer .container {

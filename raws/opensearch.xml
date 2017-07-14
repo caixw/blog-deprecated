@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/pec/opensearch/1.1/">
+    <Language>zh-cmn-Hans</Language>
     <InputEncoding>UTF-8</InputEncoding>
+    <OutputEncoding>UTF-8</OutputEncoding>
     <ShortName>caixw.io</ShortName>
     <Description>在 caixw.io 上搜索内容</Description>
     <Image height="16" width="16" type="image/x-icon">https://caixw.io/favicon.ico</Image>

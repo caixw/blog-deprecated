@@ -53,7 +53,7 @@
   title: JSON
   content: >
     <section>
-    <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
+    <p><abbr title="JavaScript Object Notation">JSON</abbr> 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成。 它是基于 JavaScript 的一个子集。JSON 采用完全独立于语言的文本格式，但是也使用了类似于 C 语言家族的习惯，这些特性使 JSON 成为理想的数据交换语言。</p>
     </section>
 
 - slug: jwt
@@ -96,4 +96,11 @@
   content: >
     <section>
     <p>Vim 是从 vi 发展出来的一个高度可定制的文本编辑器。通过插件可实现代码补全、编译等大部分 IDE 功能，在程序员中被广泛使用。是类 Unix 系统用户最喜欢的两大编辑器之一。</p>
+    </section>
+
+- slug: xml
+  title: XML
+  content: >
+    <section>
+    <p><abbr title="eXtensible Markup Language">XML</abbr> 可扩展标记语言，和 HTML 一样是一种标记语言。</p>
     </section>

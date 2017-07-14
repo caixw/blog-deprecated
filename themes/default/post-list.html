@@ -5,7 +5,7 @@
         <header>
             <h2 class="title">
                 <a href="{{.Permalink}}" itemprop="url" type="text/html">
-                    <span itemprop="name headline">{{.Title}}<span>
+                    <span itemprop="name headline">{{.Title}}</span>
                 </a>
             </h2>
             <div class="meta">
@@ -33,7 +33,7 @@
             </div>
         </header>
         {{.Summary|html}}
-        <p><a itemprop="url" href="{{.Permalink}}" type="text/html">继续阅读&#160;&raquo;</a></p>
+        <p><a itemprop="url" href="{{.Permalink}}" type="text/html">继续阅读&#160;&#187;</a></p>
     </article>
     {{- end}}
 </div>

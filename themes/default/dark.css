@@ -5,6 +5,7 @@
 
     --appbar-background: #3f51b5;
     --appbar-foreground: #ccc;
+    --appbar-link-foreground: #aaa;
 
     --post-background: #212121;
     --post-foreground: #ccc;
@@ -16,8 +17,3 @@
 
     --placeholder-foreground: #bdbdbd;
 }
-
-footer {
-    --link-foreground: #ff80ab;
-}
-

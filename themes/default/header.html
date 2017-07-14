@@ -42,7 +42,7 @@
     <body>
     <header id="header">
         <nav>
-            <a class="item title" title="{{.Subtitle}}" href="{{if .Root}}{{.Root}}{{else}}/{{end}}">
+            <a class="item title" title="{{.Subtitle}}" href="{{if .Root}}{{.Root}}{{else}}/{{end}}" type="text/html">
                 <span itemprop="name">{{.SiteName}}</span>
             </a>
             {{range .Menus -}}
@@ -57,11 +57,11 @@
             {{end -}}
 
             <form action="/search.html" method="GET" class="item search">
-                <input autocomplete="off" type="search" name="q" value="{{.Q}}" placeholder="查询内容" />
+                <input aria-label="搜索" autocomplete="off" type="search" name="q" value="{{.Q}}" placeholder="请输入搜索内容" />
             </form>
         </nav>
     </header>
 
-    <div id="content">
+    <main id="content">
         <div class="container">
 {{- end}}
