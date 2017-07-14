@@ -9,31 +9,31 @@
                 </a>
             </h2>
             <div class="meta">
-                <span class="item">
+                <span class="item" aria-label="发布时间">
                     <i title="发布时间" class="fa fa-calendar-plus-o" aria-hidden="true"></i>
                     <time itemprop="dateCreated datePublished" datetime="{{.Created|rfc3339}}">{{.Created|sdate}}</time>
                 </span>
 
-                <span class="item">
+                <span class="item" aria-label="修改时间">
                     <i title="修改时间" class="fa fa-calendar-check-o" aria-hidden="true"></i>
                     <time itemprop="dateModified" datetime="{{.Modified|rfc3339}}">{{.Modified|sdate}}</time>
                 </span>
 
-                <span class="item">
+                <span class="item" aria-label="关联标签">
                     <i title="关联标签" class="fa fa-tags" aria-hidden="true"></i>
                     {{range .Tags -}}
                     <a href="{{.Permalink}}" rel="tag" type="text/html"><span itemprop="keywords">{{.Title}}</span></a>
                     {{- end}}
                 </span>
 
-                <span class="item" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span class="item" itemprop="author" itemscope itemtype="https://schema.org/Person" aria-label="作者">
                     <i title="作者" class="fa fa-user" aria-hidden="true"></i>
                     <span itemprop="name">{{.Author.Name}}</span>
                 </span>
             </div>
         </header>
         {{.Summary|html}}
-        <p><a itemprop="url" href="{{.Permalink}}" type="text/html">继续阅读&#160;&#187;</a></p>
+        <p><a itemprop="url" href="{{.Permalink}}" type="text/html" aria-label="阅读全文">继续阅读&#160;&#187;</a></p>
     </article>
     {{- end}}
 </div>

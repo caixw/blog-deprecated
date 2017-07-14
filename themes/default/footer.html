@@ -2,12 +2,12 @@
                 {{if or .PrevPage .NextPage -}}
                 <div class="pages-nav item">
                     {{if .PrevPage -}}
-                        <a class="prev" rel="prev" href="{{.PrevPage.URL}}">
+                        <a class="prev" rel="prev" href="{{.PrevPage.URL}}" aria-label="前一篇文章">
                             &#171;&#160;{{.PrevPage.Text}}
                         </a>
                     {{- end}}
                     {{if .NextPage -}}
-                        <a class="next" rel="next" href="{{.NextPage.URL}}">
+                        <a class="next" rel="next" href="{{.NextPage.URL}}" aria-label="后一篇文章">
                             {{.NextPage.Text}}&#160;&#187;
                         </a>
                     {{- end}}
