@@ -77,6 +77,13 @@
     <p>macOS 是苹果公司推出的类 UNIX 系统，是其公司 Mac 系列产品的预装该操作系统。由 2016 年 3 月从 OSX 更名为 macOS。</p>
     </section>
 
+- slug: php
+  title: PHP
+  content: >
+    <section>
+    <p>世界上最好的语言 PHP</p>
+    </section>
+
 - slug: restful
   title: RESTful
   content: >

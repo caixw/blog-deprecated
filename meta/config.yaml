@@ -2,7 +2,7 @@
 
 title: caixw
 subtitle: 好记性不如烂笔头
-url: https://caixw.io
+url: https://caixw.io  # 不包含最后的斜杠
 uptime: 2016-03-06T00:00:01+0800
 language: zh-cmn-Hans
 pageSize: 20
@@ -50,7 +50,7 @@ sitemap: # sitemap 的配置，为空表示没有
 
 opensearch: # opensearch 设置
     url: /opensearch.xml
-    title: caixw.io 搜索引擎
-    shortName: 在 caixw.io 搜索内容
-    longName: 在 caixw.io 搜索内容
-    description: 在 caixw.io 搜索内容
+    title: caixw.io 的搜索引擎
+    shortName: caixw.io 的搜索引擎
+    longName: caixw.io 的搜索引擎
+    description: 由 caixw.io 提供的搜索引擎，可根据标题和内容搜索文章。
