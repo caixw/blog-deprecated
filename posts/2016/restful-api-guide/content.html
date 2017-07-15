@@ -173,7 +173,7 @@
 
     <section>
         <h4>Strict-Transport-Security</h4>
-        <p>HSTS 报头只对 HTTPS 启作用，一量浏览器接收到这个报头，之后的一段时间之内（时间由 HSTS 报头指指出）只会对服务器发送 HTTPS 请求，否则就会拒绝传输任何数据。</p>
+        <p>HSTS 报头只对 HTTPS 启作用，一旦浏览器接收到这个报头，之后的一段时间之内（时间由 HSTS 报头指 的 max-age 指定）只会对服务器发送 HTTPS 请求，否则就会拒绝传输任何数据。</p>
         <p>格式为：<samp>Strict-Transport-Security:max-age=17000604;includeSubDomains</samp>，其中 <code>includeSubDomains</code> 是一个可选值，指定了表示同时作用于子域名；max-age 指定了时间段，单位为秒，超过该时间段将不再启作用，不过每次获取带有该报头的响应时，都会刷新超始时间。</p>
     </section>
 
