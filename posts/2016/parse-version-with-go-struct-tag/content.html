@@ -94,18 +94,18 @@
 }</code></pre>
 
 <p>之后我们只需要定义各类版本号的相关结构体，然后传给 <code>Parse</code> 就可以了：</p>
-<pre><code class="language-go"> // Major_Version_Number.Minor_Version_Number[.Revision_Number[.Build_Number]]
-    type GNUVersion struct {
-        Major    int    `version:"0,.1"`
-        Minor    int    `version:"1,.2"`
-        Revision int    `version:"2, 3"`
-        Build    string `version:"3"`
-    }
+<pre><code class="language-go">// Major_Version_Number.Minor_Version_Number[.Revision_Number[.Build_Number]]
+type GNUVersion struct {
+    Major    int    `version:"0,.1"`
+    Minor    int    `version:"1,.2"`
+    Revision int    `version:"2, 3"`
+    Build    string `version:"3"`
+}
 
-    gnu := &amp;GNUVersion{}
-    sem := &amp;SemVersion{}
-    Parse(gnu, "1.2.0 build-1124")
-    Parse(sem, "1.2.0+20160615")
+gnu := &amp;GNUVersion{}
+sem := &amp;SemVersion{}
+Parse(gnu, "1.2.0 build-1124")
+Parse(sem, "1.2.0+20160615")
 </code></pre>
 
 <p>查看完整的实现：<a href="https://github.com/issue9/version">https://github.com/issue9/version</a></p>
