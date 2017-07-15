@@ -1,0 +1,10 @@
+title: 使用 Go 的 struct tag 来解析版本号字符串
+path: content.html
+created: 2016-06-15T23:14:53+0800
+modified: 2017-07-15T14:19:16+0800
+keywords: Go, version, struct tag, 版本号
+tags: go,version,semver
+summary: >
+    <section>
+    <p>用 Go 写一个通用的版本号解析函数。</p>
+    </section>
