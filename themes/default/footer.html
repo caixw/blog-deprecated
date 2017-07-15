@@ -20,24 +20,31 @@
 
         <footer id="footer">
             <div class="container">
-                <p>
-                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        &copy; 2016 - 2017 by
-                        <a href="{{.URL}}" itemprop="url" type="text/html">
-                            <span itemprop="name">caixw</span>
-                        </a>
+                <div>
+                    <span>&copy; 2016 - 2017 by
+                        <a href="{{.URL}}" itemprop="url" type="text/html">caixw</a>
                     </span>
-                    &#8901; {{.Beian}} &#8901;
-                    <a href="https://aliyun.com" type="text/html">阿里云</a> 9 折优惠码：O2BCSO
-                </p>
+                    <span aria-hidden="true">&#8901;</span>
+                    Powered by <a href="https://github.com/caixw/typing" type="text/html">typing</a>
+                </div>
 
-                <p>
-                    Powered by <a href="https://github.com/caixw/typing" type="text/html">typing</a> &#8901;
-                    build with <a href="https://golang.org" type="text/html">Go</a>
-                </p>
+                <div>
+                    <a href="https://aliyun.com" type="text/html">阿里云</a> 9 折优惠码：O2BCSO
+                </div>
+
+                <div id="sidebar-nav">
+                    <a id="top" href="#" title="返回顶部">
+                        <i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>
+                        <span class="text">返回顶部</span>
+                    </a>
+
+                    <a type="text/html" href="https://github.com/caixw/blogs/issues/new?title={{.Canonical}}&amp;" title="纠正错误">
+                        <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                        <span class="text">纠正错误</span>
+                    </a>
+                </div>
             </div>
         </footer>
-        <a id="top" href="#" title="返回顶部"><i class="fa fa-chevron-circle-up fa-3x" aria-hidden="true"></i></a>
     </body>
 </html>
 {{end}}

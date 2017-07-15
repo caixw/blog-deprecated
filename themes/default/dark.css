@@ -11,9 +11,7 @@
     --post-foreground: #ccc;
     --post-foreground-meta: #bdbdbd;
 
-    --top-foreground: #448aff;
-
-    --divider-foreground: #999;
+    --divider-foreground: #333;
 
     --placeholder-foreground: #bdbdbd;
 }

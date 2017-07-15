@@ -192,18 +192,38 @@ a:hover {
     float: right;
 }
 
-/************ #top ************/
-#top {
-    position: fixed;
-    right: 2rem;
-    bottom: 7rem;
-    color:var(--top-foreground);
+/************ #sidebar-nav ************/
+
+
+/* 70rem 需要与 var(--max-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
+@media (max-width: 70rem) {
+    .fa {
+        display: none !important;
+    }
 }
 
-#top:hover {
-    text-decoration: none;
-    color: var(--appbar-background);
+/* 70rem 需要与 var(--max-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
+@media (min-width: 70rem) {
+    #sidebar-nav {
+        position: fixed;
+        padding: 5px;
+        right: 1.5rem;
+        bottom: 7rem;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--divider-foreground);
+    }
+
+    #sidebar-nav:hover {
+        background: var(--divider-foreground);
+    }
+
+    .text {
+        display: none;
+    }
 }
+
+
 
 /**************** .post ***********/
 /* 包含文章内的一些常用格式定义 */
