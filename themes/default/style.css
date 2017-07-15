@@ -152,10 +152,6 @@ a:hover {
     padding: 1rem;
 }
 
-#content>.container>.item {
-    margin: 1rem 0;
-}
-
 #content .post .title a {
     margin-bottom: .2rem;
 }
@@ -188,8 +184,11 @@ a:hover {
     margin-right: 1rem;
 }
 
-.pages-nav .next {
-    float: right;
+.pages-nav {
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 /************ #sidebar-nav ************/

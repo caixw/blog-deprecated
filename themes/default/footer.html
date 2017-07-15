@@ -1,17 +1,16 @@
 {{define "footer" -}}
                 {{if or .PrevPage .NextPage -}}
-                <div class="pages-nav item">
+                <div class="pages-nav">
                     {{if .PrevPage -}}
-                        <a class="prev" rel="prev" href="{{.PrevPage.URL}}" aria-label="前一篇文章">
+                        <a rel="prev" href="{{.PrevPage.URL}}" aria-label="前一篇文章">
                             &#171;&#160;{{.PrevPage.Text}}
                         </a>
                     {{- end}}
                     {{if .NextPage -}}
-                        <a class="next" rel="next" href="{{.NextPage.URL}}" aria-label="后一篇文章">
+                        <a rel="next" href="{{.NextPage.URL}}" aria-label="后一篇文章">
                             {{.NextPage.Text}}&#160;&#187;
                         </a>
                     {{- end}}
-                    <div class="clearfix"></div>
                 </div>
                 {{- end}}
 
