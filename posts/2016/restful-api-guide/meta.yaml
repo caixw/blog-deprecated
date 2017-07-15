@@ -1,8 +1,8 @@
 title: RESTful API 设计实践
 path: content.html
 created: 2016-03-23T22:23:20+0800
-modified: 2017-07-10T22:55:26+0800
-keywords: RESTful, API, HTTP, RESTful-API, JSON, XML
+modified: 2017-07-15T11:54:06+0800
+keywords: RESTful, API, HTTP, RESTful-API, JSON, XML, HTTPS, HSTS
 tags: restful,http,api,json,xml
 summary: >
     <section>

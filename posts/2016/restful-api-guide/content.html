@@ -148,12 +148,52 @@
 </section>
 
 <section>
+    <h2>安全</h2>
+
+    <section>
+        <h3>数据安全</h3>
+        <p>我们一般都会用一个自增的 ID 作为资源的唯一 ID，但是如果把这一 ID 直接呈现给用户的话，就有可能不经意间泄露了你的业务信息。比如查看用户订单列表的接口：<samp>/users/100/orders</samp>，返回以下数据：</p>
+        <pre><code class="language-json">{
+            "count": 2,
+            "orders": [
+                {"id": 100, name: "商品1", created: "2017-07-01"},
+                {"id": 1000, name: "商品1", created: "2017-07-30"}
+            ]
+    }</code></pre>
+        <p>用语根据当前的订单 ID 就可以获取平台的订单量；用户只要在月初和月末各下一单，还能获取到平台的订单月增长量。对于这类的敏感数据，要使用具有唯一性的随机数据，比如 UUID。</p>
+        <p>上在的接口定义还有一个问题，即指定多余的用户 ID。100 为当前用户的 ID，有些聪明的人就会把 100 换成其它数据试试，这时候如果你的服务端没有做限定的话，无形就造成了用户数据的泄密。甚至是你做了限定，但是对该 ID 用户是否存在，返回了不同的状态提示，对方也可以根据这些试出用户数量。所以对于限定用户的一些接口，我们可以把其 ID 省去，由服务端根据登录的 token 作判断，接口可以改成：<samp>/orders</samp>。</p>
+    </section>
+
+    <h3>服务器安全</h3>
+
+    <section>
+        <h4>HTTPS</h4>
+        <p>全站启用 HTTPS 协议，不要在意那么点性能浪费，相对于安全，完全是值得的。</p>
+    </section>
+
+    <section>
+        <h4>Strict-Transport-Security</h4>
+        <p>HSTS 报头只对 HTTPS 启作用，一量浏览器接收到这个报头，之后的一段时间之内（时间由 HSTS 报头指指出）只会对服务器发送 HTTPS 请求，否则就会拒绝传输任何数据。</p>
+        <p>格式为：<samp>Strict-Transport-Security:max-age=17000604;includeSubDomains</samp>，其中 <code>includeSubDomains</code> 是一个可选值，指定了表示同时作用于子域名；max-age 指定了时间段，单位为秒，超过该时间段将不再启作用，不过每次获取带有该报头的响应时，都会刷新超始时间。</p>
+    </section>
+
+    <section>
+        <h4>限定访问频率</h4>
+        <p>限定用户的访问频率，一般是全站所有的接口，在一段时间内，用户有个访问的上限，超过这个上限，我们可以拒绝请求，返回 429 状态码。可以通过令牌桶算法实现。总共包含以下三个报头：</p>
+        <ol>
+            <li>X-Rate-Limit-Limit: 同一个时间段所允许的请求的最大数目；</li>
+            <li>X-Rate-Limit-Remaining: 在当前时间段内剩余的请求的数量；</li>
+            <li>X-Rate-Limit-Reset: 为了得到最大请求数所等待的秒数。</li>
+        </ol>
+    </section>
+</section>
+
+<section>
     <h2>其它</h2>
     <ol>
-    <li>在条件允许的情况下，尽量启用 HTTPS 协议。</li>
-    <li>将 API 部署到专门的域名下，比如：<samp>https://api.caixw.io</samp>。当然如果接口够简单，且不会有扩展的可能，也可以直接放在主域名下：<samp>https://caixw.io/api/</samp></li>
+    <li>将 API 部署到专门的域名下，比如：<samp>https://api.example.com</samp>。当然如果接口够简单，且不会有扩展的可能，也可以直接放在主域名下：<samp>https://example.com/api/</samp></li>
     <li>使用 JSON 作为数据交换的格式。JSON 是比 XML 更加轻便的数据交互格式，若没有特殊原因，建议使用 JSON 作为数据交换格式，当然如果你有条件，也可两种格式都提供；</li>
     <li>输出格式化之后的数据；</li>
-    <li>启用 gzip。</li>
+    <li>启用内容压缩。</li>
     </ol>
 </section>
