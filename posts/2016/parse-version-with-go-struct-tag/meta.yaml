@@ -6,5 +6,5 @@ keywords: Go, version, struct tag, 版本号
 tags: go,version,semver
 summary: >
     <section>
-    <p>用 Go 写一个通用的版本号解析函数。</p>
+    用 Go 写一个通用的版本号解析函数。
     </section>

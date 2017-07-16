@@ -21,7 +21,7 @@
         {{if .Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Atom.Title}}" href="{{.Atom.URL}}" />{{end}}
         {{if .Opensearch -}}
         <link rel="search" type="application/opensearchdescription+xml" title="{{.Opensearch.Title}}" href="{{.Opensearch.URL}}" />
-        {{end}}
+        {{- end}}
         {{if .Keywords}}<meta name="keywords" content="{{.Keywords}}" itemprop="keywords" />{{end}}
         {{if .Description -}}
         <meta name="description" content="{{.Description|strip}}" itemprop="description" property="og:description" />
