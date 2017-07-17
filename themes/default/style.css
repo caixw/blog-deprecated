@@ -211,6 +211,7 @@ a:hover {
         display: flex;
         flex-direction: column;
         border: 1px solid var(--divider-foreground);
+        line-height: 1; /* 重置由 footer 中的 line-height */
     }
 
     #sidebar-nav .text,
@@ -244,7 +245,7 @@ a:hover {
         bottom: 0;
         display: block;
         text-align: center;
-        line-height: 2.8;
+        line-height: 2.3;
         background: var(--divider-foreground);
         border: 1px solid var(--divider-foreground);
     }
