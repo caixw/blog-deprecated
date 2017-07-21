@@ -3,19 +3,19 @@
 <html lang="{{.Language}}" itemscope itemtype="https://schema.org/Blog" xmlns:og="http://ogp.me/ns#">
     <head itemscope itemtype="http://schema.org/WebSite" profile="http://gmpg.org/xfn/11">
         <meta charset="utf-8" itemprop="encoding" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}</title>
         <meta itemprop="headline" content="{{.Subtitle}}" />
         <meta itemprop="name" content="{{.SiteName}}" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="{{.Language}}" />
-        <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}"/>
-        <meta property="og:site_name" content="{{.SiteName}}"/>
+        <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}" />
+        <meta property="og:site_name" content="{{.SiteName}}" />
 
         {{- if .Canonical -}}
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />
-        <meta property="og:url" content="{{.Canonical}}"/>
+        <meta property="og:url" content="{{.Canonical}}" />
         {{- end}}
         {{if .RSS}}<link rel="alternate" type="application/rss+xml" title="{{.RSS.Title}}" href="{{.RSS.URL}}" />{{end}}
         {{if .Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Atom.Title}}" href="{{.Atom.URL}}" />{{end}}
@@ -44,7 +44,7 @@
     <body>
     <header id="header">
         <nav>
-            <a class="item title" title="{{.Subtitle}}" href="{{if .Root}}{{.Root}}{{else}}/{{end}}" type="text/html">
+            <a class="item" title="{{.Subtitle}}" href="{{if .Root}}{{.Root}}{{else}}/{{end}}" type="text/html">
                 <span itemprop="name">{{.SiteName}}</span>
             </a>
             {{range .Menus -}}
