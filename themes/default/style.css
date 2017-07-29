@@ -206,10 +206,9 @@ a:hover {
 
 /************ #sidebar-nav ************/
 
-
 /* 70rem 需要与 var(--max-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
 @media (max-width: 70rem) {
-    .fa {
+    #sidebar-nav .fa {
         display: none !important;
     }
 }
@@ -256,7 +255,7 @@ a:hover {
         background: var(--divider-foreground);
         border: 1px solid var(--divider-foreground);
     }
-}
+} /* end meida-query */
 
 
 
