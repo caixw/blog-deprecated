@@ -1,0 +1,109 @@
+<section>
+    <h2>需求</h2>
+    <p>一个通用的日志包，应该满足以下几个需求：</p>
+    <p><strong>兼容 <code>log.Logger</code></strong>，标准库大量使用了 <code>log.Logger</code> 作为其错误内容的输出通道，比如 <samp>net/http.Server.ErrorLog</samp>，所以兼容 <code>log.Logger</code> 是首要的需求；</p>
+
+    <p><strong>自定义配置</strong>，不同的运行环境，往往需要不同的日志输出配置，在不重新编译源码的情况下，就能改变配置也应该成为一项标配；</p>
+
+    <p><strong>不同的输出类型</strong>，根据目前市面上大部分的日志库，我们把日志分为以下六种类型：<code>INFO</code>、<code>WARN</code>、<code>DEBUG</code>、<code>TRACE</code>、<code>ERROR</code> 和 <code>CRITICAL</code>；</p>
+
+    <p><strong>对日志内容的自定义处理</strong>，比如将日志按时间段进行切割，或是重要内容发邮箱进行提醒等。</p>
+</section>
+
+<section>
+    <h2>配置文件</h2>
+    <p>根据以上的需求，我们可以拟定一个以下格式的 XML 配置文件：</p>
+    <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;logs&gt;
+    &lt;info prefix="INFO" flag="log.lstdflag" &gt;
+        &lt;!-- 向控制台输出信息 --&gt;
+        &lt;console output="stderr" foreground="red" background="blue" /&gt;
+    &lt;/info&gt;
+
+    &lt;error prefix="ERROR" flag="log.lstdflag" /&gt;
+        &lt;!-- 向控制台输出信息 --&gt;
+        &lt;console output="stderr" foreground="red" background="blue" /&gt;
+
+        &lt;!-- 输出到 /var/logs/debug 目录下，如果大于 5M，则新建文件 --&gt;
+        &lt;rotate dir="/var/logs/debug/" size="5M" /&gt;
+    &lt;/error&gt;
+
+    &lt;critical prefix="CRITICAL" flag="log.lstdflag" &gt;
+        &lt;!-- 向指定的邮箱发送错误信息 --&gt;
+        &lt;smtp username="u"
+        password="p"
+        host="smtp.example.com"
+        subject="CRITICAL"
+        sendTo="u1@example.com;u2@example.com" /&gt;
+    &lt;/critical&gt;
+&lt;/logs&gt;</code></pre>
+    <p>顶级元素固定为 <code>logs</code>；</p>
+
+    <p>二级元素为 <code>INFO</code> 和 <code>WARN</code> 等六种固定的类型，在加载时，将其初始为一个 <code>*log.Logger</code> 实例，初始化参数可以直接从 XML 的属性和子元素中获取；</p>
+
+    <p>二级以下的元素，统一初始化为 <code>io.Writer</code> 实例，当作 <code>log.New()</code> 的参数，用于初始化其父元素。用户可通过接口自定义这些元素，若有初始化参数，则从其 XML 属性值中获取。</p>
+
+    <p>这样就达到了一个自由度相对比较高的配置文件。</p>
+</section>
+
+<section>
+    <h2>接口设计</h2>
+    <p>根据以上要求，我们大致上可以确定下来接口的内容。</p>
+    <p>一个从配置文件进行初始化的接口：</p>
+    <pre><code class="language-go">func InitFromConfig(path string) error
+</code></pre>
+
+    <p>以及各个输出类型的操作函数，最主要的就是获取 <code>*log.Logger</code> 的接口，以及一些常用的简化调用。以 INFO 类型为例，我们可以定义以下几个函数，其它类型也都相同，只是函数名不同。</p>
+<pre><code class="language-go">func INFO() *log.Logger  // 返回与 INFO 类型对应的 *log.Logger 实例
+
+// 针对 INFO 类型日志的一些常用操作进行封装
+func Info(v ...interface{})                // 相当于 INFO().Println()
+func Infof(format string, v...interface{}) // 相当于 INFO().Printf()
+</code></pre>
+
+    <p>我们还需要公开一个注册接口，用于注册用户自定义的元素：</p>
+    <pre><code class="language-go">type Init func(args map[string]string)(io.Writer, error)
+
+func Register(name string, fn Init)
+</code></pre>
+</section>
+
+<section>
+    <h2>使用</h2>
+    <p>只要在 main() 中正确定加载了配置文件，之后随处都可以调用：</p>
+    <pre><code class="language-go">// main.go
+func main() {
+    err := logs.InitFromConfig("./config/logs.xml")
+    if err !=nil {
+        panic(err)
+    }
+
+    // do something
+}
+
+// file1.go
+func h1(w http.ResponseWriter, r *http.Request) {
+    if !auth() {
+        logs.Infof("鉴权失败")
+        w.WriteHeader(http.StatusUnauthorized)
+        return
+    }
+}
+
+// file2.go
+func getServer(port string, h http.Handler) *http.Server {
+    return &amp;http.Server {
+        Addr: port,
+        Handler: h,
+        ErrorLog: logs.INFO(),
+    }
+}
+</code></pre>
+</section>
+
+
+<section>
+    <h2>实现</h2>
+    <p>完整的实现代码在：<a href="https://github.com/issue9/logs">https://github.com/issue9/logs</a>。</p>
+</section>
+

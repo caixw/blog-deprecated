@@ -70,6 +70,13 @@
     <p>JSON Web Token 是一种基于 Token 的认证授权机制。</p>
     </section>
 
+- slug: log
+  title: 日志
+  content: >
+    <section>
+    <p>日志</p>
+    </section>
+
 - slug: macos
   title: macOS
   content: >
