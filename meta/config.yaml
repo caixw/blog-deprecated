@@ -42,6 +42,7 @@ rss:   # rss 的配置，为空表示没有
 
 sitemap: # sitemap 的配置，为空表示没有
     url: /sitemap.xml
+    xslURL: /sitemap.xsl
     enableTag: true
     tagPriority: 0.5
     postPriority: 0.4
