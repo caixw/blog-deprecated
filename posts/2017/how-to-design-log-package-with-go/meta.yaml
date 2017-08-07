@@ -1,7 +1,7 @@
 title: 如何为 Go 设计一个通用的日志包
 path: content.html
-created: 2017-07-16T21:04:59+0800
-modified: 2017-08-06T01:07:17+0800
+created: 2017-07-16T21:04:59+08:00
+modified: 2017-08-06T01:07:17+08:00
 keywords: Go, log, XML, 日志
 tags: go,log,xml
 summary: >
