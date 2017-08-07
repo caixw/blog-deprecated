@@ -12,10 +12,7 @@
         <meta property="og:locale" content="{{.Language}}" />
         <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}" />
         <meta property="og:site_name" content="{{.SiteName}}" />
-
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+        {{if .Icon -}}<link rel="icon" type="{{.Icon.Type}}" href="{{.Icon.URL}}" />{{- end}}
         {{- if .Canonical -}}
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />
         <meta property="og:url" content="{{.Canonical}}" />

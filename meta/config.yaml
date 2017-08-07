@@ -11,6 +11,11 @@ shortDateFormat: 2006-01-02
 beian: 	浙ICP备16000327号-1
 theme: default
 
+icon: # 程序图标
+    url: /favicon.png
+    type: image/png
+    sizes: 256x256
+
 author: # 默认的作者信息
     name: caixw
     url: https://caixw.io # 不包含最后的斜杠
