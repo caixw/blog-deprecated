@@ -56,6 +56,13 @@
     <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> 基于 TCP 的一种网络传输协议。</p>
     </section>
 
+- slug: iterator
+  title: 迭代器
+  content: >
+    <section>
+    <p>一种设计模式，提供一种访问容器内部数据的方法，又不用暴露容器内部细节。</p>
+    </section>
+
 - slug: javascript
   title: JavaScript
   content: >

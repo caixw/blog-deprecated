@@ -2,8 +2,8 @@ title: SPL 中的迭代器详解
 path: content.html
 created: 2010-07-28T03:36:05+08:00
 modified: 2010-07-28T03:36:05+08:00
-keywords: PHP,SPL,Standard PHP Library
-tags: php,spl
+keywords: PHP,SPL,Standard PHP Library,迭代器
+tags: php,spl,iterator
 summary: >
     <section>
     <p>迭代器这种设计模式很常见，也很实用。最著名的要算是 C++ 中 STL 的实现了。它提供了一个统一的接口，使用访问者在不知道类对象内部数据结构的情况下遍历其内部数据。PHP5 中提供了对这种设计模式的内置支持，其实所谓的内置支持就是可以使用 <code>foreach</code> 语言结构来访问实现迭代器接口的类。</p>
