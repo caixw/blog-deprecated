@@ -1,0 +1,10 @@
+title: Javascript prototype 介绍
+path: content.html
+created: 2010-08-15T04:37:27+08:00
+modified: 2010-08-15T04:37:27+08:00
+keywords: javascript
+tags: javascript
+summary: >
+    <section>
+    <p>一说到 prototype 很多人可能第一个想到的是著名的 prototype.js 框架，当然我们今天说的不是它，而是 JavaScript 中的 prototype 属性，一般都被翻译为“原型”。这是一个比较特殊的属性，Javascript 中的继承一般都依赖这属性实现。</p>
+    </section>

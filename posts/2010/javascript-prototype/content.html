@@ -1,0 +1,136 @@
+<section>
+    <p>一说到 prototype 很多人可能第一个想到的是著名的 prototype.js 框架，当然我们今天说的不是它，而是 JavaScript 中的 prototype 属性，一般都被翻译为“原型”。这是一个比较特殊的属性，Javascript 中的继承一般都依赖这属性实现。</p>
+
+    <p>在 JavaScript 中，一切都是对象，字符串是对象，数组是对象，变量是对象，函数也是对象，所以才会允许 <samp>['a','b','c'].push('d');</samp> 这样的操作存在。类本身也是一个对象，也可以定义属性和方法：</p>
+    <pre><code class="language-javascript">function Test(){};
+Test.str = 'str';
+Test.fun = function(){return 'fun';};
+
+var r1 = Test.str;    // str
+var r2 = Test.fun();  // fun
+
+var inst = new Test();
+var r3 = inst.str;    // undefined
+var r4 = inst.fun();  // undefined
+</code></pre>
+
+    <p>prototype 就是一个作用于类的属性。默认情况下，所有 JavaScript 类都会有一个 prototype 属性，但是类实例没有。</p>
+    <pre><code class="language-javascript">function Test(){};
+var p1 = typeof(String.prototype);       // object
+var p2 = typeof(Test.prototype);         // object
+var p3 = typeof(new Test().prototype);   // undefined
+var p4 = typeof(Object.prototype);       // object
+var p5 = typeof(new Object().prototype); // undefined
+</code></pre>
+</section>
+    
+
+<section>
+    <h2>取值与赋值</h2>
+    <p>在 JavaScript 中，当我们取一个对象中并不存在的属性或是方法时，它会试图查看该对象所对应的类中的 prototype 属性中是否包含该属性或是方法，而 prototype 也是一个 JavaScript 对象，若是其中也没有，该 prototype 又会访问它对应的类的 prototype，如此一级级地向上访问，直到找到需要的属性或方法，或是 prototype 属性为 null。</p>
+    <pre><code class="language-javascript">function Test(){};
+Test.test = 'str';
+
+function pt1() {
+    this.test1 = 'pt1';
+}
+
+function pt2() {
+    this.test2 = 'pt2';
+}
+
+pt2.prototype.test3 = 'test3';
+pt2.prototype.test1 = 'test4';
+pt1.prototype = new pt2();
+Test.prototype = new pt1();
+
+var inst = new Test();
+var p1 = inst.test;  // undefined
+var p2 = inst.test1; // pt1 而不是 test4
+var p3 = inst.test2; // pt2
+var p4 = inst.test3; // test3
+</code></pre>
+    
+    <p>相对于取值，赋值就简单得多了。它并不会一层层向上查找 prototype 中的属性值，而直接对当前的实例进行赋值，没有则创建。</p>
+</section>
+
+<section>
+    <h2>内置类的增强</h2>
+
+    <p>在 JavaScript 中并不能直接修改内置类的 prototype。但是可以通过修改 prototype 的属性达到修改内置类行为的目的。<p>
+
+    <pre><code class="language-javascript">Array.prototype = { // 不起作用
+    push: function() {
+        alert('test1');
+    }
+};
+
+Array.prototype.push = function() { // 可以
+    alert('test2');
+};
+
+var test = new Array('a','b','c');
+test.push('d'); // test2
+</code></pre>
+    
+    <p>一次可以插入多个元素的 <code>Array.push</code> 函数：</p>
+
+    <pre><code class="language-javascript">Array.prototype.pushs = function() {
+    var pos = this.length;
+
+    for(var i=0; i&lt;arguments.length; i++) {
+        this[++pos] = arguments[i];
+    }
+
+    return this.length;
+}
+
+var test = new Array('a','b','c');
+test.pushs('d','e');
+</code></pre>
+
+    <p>值得注意的是，为内置类的 prototype 添加的函数，在使用 <code>for</code> 语句输出属性时，也会被显示：</p>
+
+    <pre><code class="language-javascript">var str;
+
+for(var i in test) {
+    str += ('  ' + i); // '0   1  2  3  4  5  pushs' pushs 自定义函数。
+}
+</code></pre>
+    
+    <p>但是可以通过 <code>hasOwnProperty()</code> 进行判断：</p>
+
+    <pre><code class="language-javascript">var str;
+
+for(var i in test) {
+    if(test.hasOwnProperty(i)) { // 过滤掉 pushs 函数。
+        str += ('  ' + i);
+    }
+}
+</code></pre>
+</section>
+
+<section>
+    <h2>一点点注意事项</h2>
+    <p>前面说过，prototype 是类的一个属性。更改 prototype 中的属性值，有可能会带来意想不到的灾难！</p>
+
+    <pre><code class="language-javascript">function Test(){}
+Test.prototype.num = 3;
+
+var inst1 = new Test();
+var inst2 = new Test();
+
+Test.prototype.num = 4; // 所有指向 Test.prototype.num 的值。
+var p1 = inst1.num;     // 4
+var p2 = inst2.num;     // 4
+
+inst1.num = 5;          // 赋值，会为 inst 对象创建一个 num 属性。
+Test.prototype.num = 6; // 所有指向 Test.prototype.num 的值。
+var p3 = inst1.num;     // 5 这里返回的是刚创建的 inst1.num 的值，而不是 Test.prototype.num 的值。
+var p4 = inst2.num;     // 6
+
+delete Test.prototype.num;
+var p5 = inst1.num;     // 5 inst1.num 依然存在。
+var p6 = inst2.num;     // undefined Test.prototype.num 被删除了。
+</code></pre>
+</section>

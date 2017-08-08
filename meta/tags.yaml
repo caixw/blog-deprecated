@@ -56,6 +56,13 @@
     <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> 基于 TCP 的一种网络传输协议。</p>
     </section>
 
+- slug: javascript
+  title: JavaScript
+  content: >
+    <section>
+    <p>一种动态、弱类型的脚本语言，最初由 Netscape 公司在其浏览器上实现，现在大部分浏览器都支持该语言。也有用于服务端的实现：NodeJS。</p>
+    </section>
+
 - slug: json
   title: JSON
   content: >
