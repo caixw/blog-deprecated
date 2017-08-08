@@ -113,7 +113,7 @@
     </section>
 
 - slug: spl
-  title: Standard PHP Library
+  title: SPL
   content: >
     <section>
     <p>Standard PHP Library，PHP 的标准类库。</p>
