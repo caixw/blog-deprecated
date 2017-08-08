@@ -112,6 +112,13 @@
     <p>一种语义化的版本定义规则。</p>
     </section>
 
+- slug: spl
+  title: Standard PHP Library
+  content: >
+    <section>
+    <p>Standard PHP Library，PHP 的标准类库。</p>
+    </section>
+
 - slug: version
   title: version
   content: >
