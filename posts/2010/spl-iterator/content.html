@@ -1,5 +1,5 @@
 <section>
-    <p>迭代器这种设计模式很常见，也很实用。最著名的要算是 C++ 中 STL 的实现了。它提供了一个统一的接口，使用访问者在不知道类对象内部数据结构的情况下遍历其内部数据。PHP5 中提供了对这种设计模式的内置支持，其实所谓的内置支持就是可以使用 <code>foreach</code> 语言结构来访问实现迭代器接口的类。</p>
+    <p>迭代器这种设计模式很常见，也很实用。最著名的要算是 C++ 中 <abbr title="Standard Template Library">STL</abbr> 的实现了。它提供了一个统一的接口，使用访问者在不知道类对象内部数据结构的情况下遍历其内部数据。PHP5 中提供了对这种设计模式的内置支持，其实所谓的内置支持就是可以使用 <code>foreach</code> 语言结构来访问实现迭代器接口的类。</p>
 </section>
 
 <section>
@@ -115,9 +115,9 @@ while($fileIter-&gt;next()) {
 
 
 <section>
-    <h2>SPL 中的 iterator 接口</h2>
+    <h2><abbr title="Standard PHP Library">SPL</abbr> 中的 iterator 接口</h2>
 
-    <p>上面这种自定义实现的迭代器接口有一个缺点，就是不能用于 <code>foreach<code> 语句。而 SPL 中提供的 iterator 却实现了对 <code>foreach</code> 的支持。
+    <p>上面这种自定义实现的迭代器接口有一个缺点，就是不能用于 <code>foreach</code> 语句。而 SPL 中提供的迭代器却实现了对 <code>foreach</code> 的支持。</p>
 
     <pre><code class="language-php">interface Iterator extends Traversable {
    // 将迭代器的指针移向第一个元素。类似于数组操作函数reset()。
@@ -255,9 +255,13 @@ foreach($test as $k=&gt;$v) {
 }
 </code></pre>
 
-<p>不难发现：</p>
-
-<p><code>foreach</code> 在执行前会调用对象的 <code>rewind()</code>函数，确保每次都是从头开始。之后会调用 <code>valid()</code> 函数确保值是否有效。然后调用 <code>key()</code>和 <code>current()</code> 将值赋给 <code>$key</code> 和 <code>$dir</code>。之后执行循环体，然后调用 <code>next()</code> 进入下一轮循环。</p>
+    <p>不难发现：</p>
+    <ol>
+        <li><code>foreach</code> 在执行前会调用对象的 <code>rewind()</code>函数，确保每次都是从头开始；</li>
+        <li>之后会调用 <code>valid()</code> 函数确保值是否有效；</li>
+        <li>然后调用 <code>key()</code>和 <code>current()</code> 将值赋给 <code>$key</code> 和 <code>$dir</code>；</li>
+        <li>之后执行循环体，然后调用 <code>next()</code> 进入下一轮循环。</li>
+    </ol>
 </section>
 
 <section>
@@ -440,7 +444,7 @@ foreach($t as $property=>$value) {
     <p>在 SPL 中已经定义了一非常有用的迭代器类，我们可以直接拿来用：</p>
 
     <ul>
-        <li>DirectoyIterator: 和我们上面实现的 <code>DirIterator</code>类大同小异。但是功能更全；</li>
+        <li>DirectoyIterator: 和我们上面实现的 <code>DirIterator</code> 类大同小异。但是功能更全；</li>
         <li>RecursiveDirectoryIterator：依旧和我们上面实现的 <code>RecursiveDirIterator</code> 类很相似；</li>
         <li>SimpleXMLIterator：一个遍历XML内容的类，关于它的信息网站信息多得不得了。这里也不做介绍了。但使用它的时候有一点需要注意，具体情况看这里；</li>
         <li>IteratorIterator：实现对迭代器的包装，这也是 SPL 中对 <code>OuterIterator</code> 默认实现；</li>
