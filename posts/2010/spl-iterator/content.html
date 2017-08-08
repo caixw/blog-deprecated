@@ -250,7 +250,7 @@ file2.txt====&gt;file2.txt
 }
 
 $test = new TestIterator();
-foreach($test as $k=7gt;$v) {
+foreach($test as $k=&gt;$v) {
     // TODO;
 }
 </code></pre>
@@ -358,7 +358,7 @@ foreach($a as $v) {
 
     <pre><code class="language-php">class ADirIterator extends FilterIterator {
     public function accept() {
-        return 0 === strpos($this-7gt;current(), 'a');
+        return 0 === strpos($this-&gt;current(), 'a');
     }
 }
 
@@ -416,22 +416,23 @@ foreach($t as $property=>$value) {
 }
 </code></pre>
 
-    <p>上例中会显示出 <samp>$p1,$p2</samp> 的属性。而 <samp>$p3,$p4,$p5,$p6</samp> 则因为访问权限问题无法列出。若想要列出被保护的成员，只需将 <code>foreach</code> 移到类内即可：</p>
-
-class Test
-{
+    <p>上例中会显示出 <code>$p1,$p2</code> 的属性。而 <code>$p3,$p4,$p5,$p6</code> 则因为访问权限问题无法列出。若想要列出被保护的成员，只需将 <code>foreach</code> 移到类内即可：</p>
+    <pre><code class="language-php">class Test {
     public $p1 = 1;
     public $p2 = 2;
     protected $p3 = 3;
     protected $p4 = 4;
     private $p5 = 5;
     private $p6 = 6;
-    public function properties()
-    {
-        foreach($this as $property=>$value)
-        {    echo $property,'====>',$value,'<br />';    }
+
+    public function properties() {
+        foreach($this as $property=>$value) {
+            echo $property,'====>',$value,'&lt;br /&gt;';
+        }
     }
 }
+</code></pre>
+
 </section>
 
 <section>
