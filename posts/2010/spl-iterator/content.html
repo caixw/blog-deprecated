@@ -403,13 +403,15 @@ try{
 
 <section>
     <h2>遍历对象属性</h2>
-    <p>当我们对一个没有实现 iterator 接口的对象使用 <code>foreach</code>时，它会依次访问对象的公共(public)属性，这是一个非常棒的机制：</p>
+    <p>当我们对一个没有实现 iterator 接口的对象使用 <code>foreach</code> 时，它会依次访问对象的公共属性，这是一个非常棒的机制：</p>
 
     <pre><code class="language-php">class Test {
     public $p1 = 1;
     public $p2 = 2;
+
     protected $p3 = 3;
     protected $p4 = 4;
+
     private $p5 = 5;
     private $p6 = 6;
 }
@@ -447,7 +449,7 @@ foreach($t as $property=>$value) {
         <li>RecursiveDirectoryIterator：依旧和我们上面实现的 <code>RecursiveDirIterator</code> 类很相似；</li>
         <li>SimpleXMLIterator：一个遍历XML内容的类，关于它的信息网站信息多得不得了。这里也不做介绍了。但使用它的时候有一点需要注意，具体情况看这里；</li>
         <li>IteratorIterator：实现对迭代器的包装，这也是 SPL 中对 <code>OuterIterator</code> 默认实现；</li>
-        <li>NoRewindIterator：取消了 <code>rewind()</code>函数的迭代器；</li>
+        <li>NoRewindIterator：取消了 <code>rewind()</code> 函数的迭代器；</li>
         <li>InfiniteIterator：从字面意思就知道，这是个无限循环的迭代器，当 <code>next()</code> 到达最后时，会自动调用 <code>rewind()</code> 函数，又从头开始；</li>
         <li>AppendIterator：它实现了对一系统迭代器的包装，并且可以在运行过程中添加新的迭代器；</li>
         <li>SplFileObject：文件操作类，可以按行的方式遍历文件内容。同时还能获取文件的大小及其它详细信息。</li>
