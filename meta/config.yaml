@@ -21,6 +21,11 @@ author: # 默认的作者信息
     url: https://caixw.io # 不包含最后的斜杠
 
 menus:  # 顶部的菜单栏内容
+  - url: /
+    title: 首页
+    text: 首页
+    icon: home
+
   - url: /tags.html
     title: 标签
     text: 标签

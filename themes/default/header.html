@@ -44,9 +44,6 @@
     <body>
     <header id="header">
         <nav>
-            <a class="item" title="{{.Subtitle}}" href="{{if .Root}}{{.Root}}{{else}}/{{end}}" type="text/html">
-                <span itemprop="name">{{.SiteName}}</span>
-            </a>
             {{range .Menus -}}
             <a class="item" href="{{.URL}}"
             {{- if .Title}} title="{{.Title}}"{{end -}}
