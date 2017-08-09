@@ -126,6 +126,14 @@
     <p>Standard PHP Library，PHP 的标准类库。</p>
     </section>
 
+- slug: tools
+  title: 工具包
+  content: >
+    <section>
+    <p>各类常用工具。</p>
+    </section>
+
+
 - slug: version
   title: version
   content: >
