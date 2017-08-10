@@ -112,6 +112,13 @@
     <p><abbr title="Representational State Transfer">REST</abbr> 最初由 <a href="https://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a> 于 <time>2000</time> 年的<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出，是一种直接应用于 HTTP 协议的软件架构设计风格，提供了相对统一的设计原则和约束条件。它简化了服务端与客户端之间的实现。</p>
     </section>
 
+- slug: security
+  title: 安全
+  content: >
+    <section>
+    <p></p>
+    </section>
+
 - slug: semver
   title: semver
   content: >

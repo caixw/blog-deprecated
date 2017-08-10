@@ -1,0 +1,239 @@
+<section>
+    <p>当用户在浏览器上点击一个链接时，会产生一个 HTTP 请求，用于获取新的页面内容，而在该请求的报头中，会包含一个 Referrer，用以指定该请求是从哪个页面跳转页来的，常被用于分析用户来源等信息。但是也有成为用户的一个不安全因素，比如有些网站直接将 sessionid 或是 token 放在地址栏里传递的，会原样不动地当作 Referrer 报头的内容传递给第三方网站。</p>
+
+    <p>所以就有了 <a href="https://www.w3.org/TR/referrer-policy/">Referrer Policy</a>，用于过滤 Referrer 报头内容，<time datetime="2017-08-10">目前</time>是一个候选标准，不过已经有部分浏览器支持该标准。具体的可查看<a href="https://www.caniuse.com/#search=referrer">这里</a>。</p>
+</section>
+
+<section>
+    <h2>Referrer Policies</h2>
+    <p>目前包含了以下几种状态值：</p>
+    <pre><code class="language-javascript">enum ReferrerPolicy {
+  "",
+  "no-referrer",
+  "no-referrer-when-downgrade",
+  "same-origin",
+  "origin",
+  "strict-origin",
+  "origin-when-cross-origin",
+  "strict-origin-when-cross-origin",
+  "unsafe-url"
+};
+</code></pre>
+    <section>
+        <h3>空字符串</h3>
+        <p>按照浏览器的默认值执行。默认值为 <a href="#no-referrer-when-downgrade">no-referrer-when-downgrade</a>。部分标签可重定义此安全策略。<p>
+    </section>
+
+    <section>
+        <h3 id="no-referrer">no-referrer</h3>
+        <p>从字面意思就可以理解，不传递 Referrer 报头的值。</p>
+    </section>
+
+    <section>
+        <h3 id="no-referrer-when-downgrade">no-referrer-when-downgrade</h3>
+        <p>当发生降级（比如从 https:// 跳转到 http:// ）时，不传递 Referrer 报头。但是反过来的话不受影响。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http://example.com/path</td>
+                    <td>http://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http<strong>s</strong>//example.com</td>
+                    <td>http://example.com/path</td>
+                    <td>无（协议降级）</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http<strong>s</strong>://example.com/path</td>
+                    <td>http://example.com?token=123</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="same-origin">same-origin</h3>
+        <p>仅当协议、域名和端口（如果有一方指定的话）都相同时，才会传递 Referrer。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http://example.com/path</td>
+                    <td>http://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http<strong>s</strong>//example.com</td>
+                    <td>http://example.com/path</td>
+                    <td>无（协议不同）</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http<strong>s</strong>://example.com/path</td>
+                    <td>无（协议不同）</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http://example.com:88/path</td>
+                    <td>无（端口不同）</td>
+                </tr>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://caixw.io</td>
+                    <td>无（域名不同）</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="origin">origin</h3>
+        <p>将当前页面过滤掉参数及路径部分，仅将协议、域名和端口（如果有的话）当作 Referrer。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http<strong>s</strong>://example.com/path</td>
+                    <td>http://example.com</td>
+                </tr>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://caixw.io</td>
+                    <td>https://example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="strict-origin">
+        <h3>strict-origin</h3>
+        <p>类似于 <a href="#origin">origin</a>，但是不能降级。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http<strong>s</strong>://example.com/path</td>
+                    <td>http://example.com</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http://caixw.io</td>
+                    <td>http://example.com</td>
+                </tr>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>http://caixw.io</td>
+                    <td>无</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="origin-when-cross-origin">origin-when-cross-origin</h3>
+        <p>跨域时（协议、域名和端口只有一个不同）和 <a href="#origin">origin</a> 模式相同，否则 Referrer 还是传递当前页的全路径。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http<strong>s</strong>://example.com/path</td>
+                    <td>http://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>http://example.com?token=123</td>
+                    <td>http://caixw.io</td>
+                    <td>http://example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="strict-origin-when-cross-origin">strict-origin-when-cross-origin</h3>
+        <p>与 <a href="#origin-when-cross-origin">origin-when-cross-origin</a> 类似，但不能降级。</p>
+        <table>
+            <thead>
+                <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://example.com/path</td>
+                    <td>https://example.com?token=123</td>
+                </tr>
+                <tr>
+                    <td>https://example.com?token=123</td>
+                    <td>https://caixw.io</td>
+                    <td>https://example.com</td>
+                </tr>
+                <tr>
+                    <td>http<strong>s</strong>://example.com?token=123</td>
+                    <td>http://example.com/path</td>
+                    <td>无</td>
+                </tr>
+                <tr>
+                    <td>http<strong>s</strong>://example.com?token=123</td>
+                    <td>http://example.com/</td>
+                    <td>无</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="unsafe-url">unsafe-url</h3>
+        <p>任意情况下，都发送当前页的全部地址到 Referrer，最宽松和不安全的策略。</p>
+    </section>
+</section>
+
+<section>
+    <h2>其它设置方式</h2>
+    <p>除了直接在 Referrer-Policy 报头中设置之外，也可以通过以下方式设置：</p>
+    <ul>
+        <li>通过地 <abbr title="Content Seucrity Policy">CSP</abbr> 报头指定：<samp>referrer origin;</samp>；</li>
+        <li>通过 <code>meta</code> 标签的 <code>referrer</code> 属性指定：<samp>&lt;meta referrer="origin" /&gt;</samp>；</li>
+        <li><code>a</code> 和 <code>link</code> 标签可以通过属性 <code>rel</code> 指定 <code>noreferrer</code>，仅对当前链接有效；</li>
+        <li><code>a</code>、<code>link</code>、<code>iframe</code> 和 <code>img</code> 还可以通过 <code>referrerpolicy</code> 指定仅针对当前链接的设置。</li>
+    </ul>
+</section>
