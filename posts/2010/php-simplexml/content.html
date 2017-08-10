@@ -1,0 +1,32 @@
+<section>
+    <p><code>SimpleXML</code> 提供了一套简单快速的 XML 操作方法，大大地提高了 XML 操作的效率。但是有时不小心也会带来不小的麻烦，看下面一段代码：</p>
+
+    <pre><code class="language-php">$xml = simplexml_load_string('title');
+$title = $xml->title;
+echo $title;
+
+$xml->title = 'test';
+echo $title;
+</code></pre>
+
+    <p>猜猜第二个输出结果会是多少？是 <samp>test</samp>，而不是想像中的 <samp>title</samp>。为什么会这样呢？原因在这里：</p>
+
+    <pre><code class="language-php">echo gettype($xml-&gt;title) // object
+echo get_class($xml-&gt;title); // SimpleXMLElement
+</code></pre>
+
+    <p>看到了吗，<code>$xml-&gt;title</code> 是一个 <code>SimpleXMLElement</code> 类的实例，而不是字符串。所以 <code>$title</code> 实际上保存的是一个到 <code>SimpleXMLElement</code> 类的一个引用，而不是字符串的副本。想要得到字符串的副本只能进行类型转换：</p>
+
+    <pre><code class="language-php">$title = (string)$xml-&gt;title; // 获得字符串
+$xml-&gt;title = 'test';
+echo $title; // 输出 title
+</code></pre>
+
+    <p><code>SimpleXMLElement</code> 应该是实现了一个类似于 <code>__tostring()</code> 的接口（有兴趣的可以去看一下 PHP 的源码，在 <q>ext/simplexml/</q> 中），才能在 <code>echo</code> 等表达式中表现类似于一个字符串。所以还有个地方需要注意：</p>
+
+    <pre><code class="language-php">$_SESSION['test'] = $xml-&gt;title; // 保存一个 SimpleXMLElement 变量到 SESSION 中
+$_SESSION['test'] = (string)$xml-&gt;title; // 字符串
+$_SESSION['test'] = strval($xml-&gt;title); // 这样也行。
+</code></pre>
+
+</section>
