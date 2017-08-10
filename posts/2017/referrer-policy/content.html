@@ -229,13 +229,52 @@
 
 <section>
     <h2>其它设置方式</h2>
-    <p>除了直接在 Referrer-Policy 报头中设置之外，也可以通过以下方式设置：</p>
-    <ul>
-        <li>通过地 <abbr title="Content Seucrity Policy">CSP</abbr> 报头指定：<samp>referrer origin;</samp>；</li>
-        <li>通过 <code>meta</code> 标签的 <code>referrer</code> 属性指定：<samp>&lt;meta referrer="origin" /&gt;</samp>；</li>
-        <li><code>a</code> 和 <code>link</code> 标签可以通过属性 <code>rel</code> 指定 <code>noreferrer</code>，仅对当前链接有效；</li>
-        <li><code>a</code>、<code>link</code>、<code>iframe</code> 和 <code>img</code> 还可以通过 <code>referrerpolicy</code> 指定仅针对当前链接的设置。</li>
-    </ul>
+    <p>除了直接在 Referrer-Policy 报头中设置之外，也可以通过以下方式设置。</p>
+
+    <section>
+        <h3><abbr title="Content Seucrity Policy">CSP</abbr> 报头</h3>
+        <p>可以通过 CSP 报头的 referrer 指令来指定 Referrer 策略：</p>
+        <pre><code>Content-Security-Policy: referrer no-referrer-when-downgrade;</code></pre>
+    </section>
+
+    <section>
+        <h3>Meta</h3>
+        <p>通过指定 name 值为 referrer 的 meta 标签，也可以达到相同的效果：</p>
+        <pre><code class="language-html">&lt;meta name="referrer" content="strict-origin" /&gt;
+</code></pre>
+        <p><code>content</code> 可以是上面的指定的值，也可以是下面的几种值，会自动作相应的转换：</p>
+        <table>
+            <thead>
+                <tr><th>Legacy</th><th>Referrer</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>never</th>
+                    <td><a href="#no-referrer">no-referrer</a></td>
+                </tr>
+                <tr>
+                    <th>default</th>
+                    <td><a href="#no-referrer-when-downgrade">no-referrer-when-downgrade</a></td>
+                </tr>
+                <tr>
+                    <th>always</th>
+                    <td><a href="#unsafe-url">unsafe-url</a></td>
+                </tr>
+                <tr>
+                    <th>origin-when-crossorigin</th>
+                    <td><a href="origin-when-cross-origin">origin-when-cross-origin<a/></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>标签属性</h3>
+        <ul>
+            <li><code>a</code> 和 <code>link</code> 标签可以通过属性 <code>rel</code> 指定 <code>noreferrer</code>，仅对当前链接有效；</li>
+            <li><code>a</code>、<code>link</code>、<code>iframe</code> 和 <code>img</code> 还可以通过 <code>referrerpolicy</code> 指定仅针对当前链接的设置。</li>
+        </ul>
+    </section>
 </section>
 
 <section>
