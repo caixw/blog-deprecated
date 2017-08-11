@@ -31,7 +31,7 @@
 
     <section>
         <h3 id="no-referrer-when-downgrade">no-referrer-when-downgrade</h3>
-        <p>当发生降级（比如从 https:// 跳转到 http:// ）时，不传递 Referrer 报头。但是反过来的话不受影响。</p>
+        <p>当发生降级（比如从 https:// 跳转到 http:// ）时，不传递 Referrer 报头。但是反过来的话不受影响。通常也会当作浏览器的默认安全策略。</p>
         <table>
             <thead>
                 <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
@@ -63,7 +63,7 @@
 
     <section>
         <h3 id="same-origin">same-origin</h3>
-        <p>仅当协议、域名和端口（如果有一方指定的话）都相同时，才会传递 Referrer。</p>
+        <p>同源，即当协议、域名和端口（如果有一方指定的话）都相同，才会传递 Referrer。</p>
         <table>
             <thead>
                 <tr><th>原地址</th><th>跳转地址</th><th>Referrer</th></tr>
@@ -242,7 +242,7 @@
         <p>通过指定 name 值为 referrer 的 meta 标签，也可以达到相同的效果：</p>
         <pre><code class="language-html">&lt;meta name="referrer" content="strict-origin" /&gt;
 </code></pre>
-        <p><code>content</code> 可以是上面的指定的值，也可以是下面的几种值，会自动作相应的转换，但不推荐这些旧的指令值：</p>
+        <p><code>content</code> 可以是上面的指定的值，也可以是下面这几种旧的指令值，会自动作相应的转换，但不推荐这些旧的指令值：</p>
         <table>
             <thead>
                 <tr><th>Legacy</th><th>Referrer</th></tr>
@@ -281,4 +281,5 @@
     <h2>参考</h2>
     <p><cite><a href="https://www.w3.org/TR/referrer-policy/">Referrer Policy</a></cite></p>
     <p><cite><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer-Policy</a></cite></p>
+    <p><cite><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">浏览器的同源策略</a></cite></p>
 </section>
