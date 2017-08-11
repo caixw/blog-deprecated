@@ -2,8 +2,8 @@ title: RESTful API 设计实践
 path: content.html
 created: 2016-03-23T22:23:20+08:00
 modified: 2017-07-29T21:36:45+08:00
-keywords: RESTful, API, HTTP, RESTful-API, JSON, XML, HTTPS, HSTS
-tags: restful,api,http,hsts
+keywords: RESTful,API,HTTP,RESTful-API,JSON,XML,HTTPS,Security,安全
+tags: restful,api,http,security
 summary: >
     <section>
     RESTful API 为网络应用程序设计提供了一套统一、合理的风格。本文从实践的角度出发，讨论 RESTful API 设计上的一些细节，探讨如何设计出一套好用、合理、精炼的 API。

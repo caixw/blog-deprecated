@@ -35,13 +35,6 @@
         <p>Go 是由 Google 开发的编种语言。拥有比 C++ 更快速的编译速度，以及更安全、简单的并行开发支持。</p>
     </section>
 
-- slug: hsts
-  title: HSTS
-  content: >
-    <section>
-    <p> HTTP Strict-Transport-Security，Web 安全传递协议，可以强制客户端以 HTTPS 与服务端交互。</p>
-    </section>
-
 - slug: html
   title: HTML
   content: >
@@ -139,7 +132,6 @@
     <section>
     <p>各类常用工具。</p>
     </section>
-
 
 - slug: version
   title: version
