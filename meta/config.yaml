@@ -11,16 +11,19 @@ shortDateFormat: 2006-01-02
 beian: 	浙ICP备16000327号-1
 theme: default
 
-icon: # 程序图标
+# 程序图标
+icon:
   url: /favicon.png
   type: image/png
   sizes: 256x256
 
-author: # 默认的作者信息
+# 默认的作者信息
+author:
   name: caixw
   url: https://caixw.io # 不包含最后的斜杠
 
-menus:  # 顶部的菜单栏内容
+# 导航菜单栏
+menus:
   - url: /
     title: 首页
     text: 首页
@@ -42,15 +45,18 @@ menus:  # 顶部的菜单栏内容
     icon: github
     rel: me
 
-atom:  # atom 的配置，为空表示没有
+# atom 的配置，为空表示没有
+atom:
   url: /atom.xml
   size: 20
 
-rss:   # rss 的配置，为空表示没有
+# rss 的配置，为空表示没有
+rss:
   url: /rss.xml
   size: 20
 
-sitemap: # sitemap 的配置，为空表示没有
+# sitemap 的配置，为空表示没有
+sitemap:
   url: /sitemap.xml
   xslURL: /sitemap.xsl
   enableTag: true
@@ -59,7 +65,8 @@ sitemap: # sitemap 的配置，为空表示没有
   tagChangefreq: "monthly"
   postChangefreq: "weekly"
 
-opensearch: # opensearch 设置
+# opensearch 设置
+opensearch:
   url: /opensearch.xml
   title: caixw.io 的搜索引擎
   shortName: caixw.io 的搜索引擎

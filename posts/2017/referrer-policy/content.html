@@ -5,8 +5,8 @@
 </section>
 
 <section>
-    <h2>Referrer Policies</h2>
-    <p>目前包含了以下几种状态值：</p>
+    <h2>指令值</h2>
+    <p>目前包含了以下几种指令值：</p>
     <pre><code class="language-javascript">enum ReferrerPolicy {
   "",
   "no-referrer",
@@ -228,13 +228,13 @@
 </section>
 
 <section>
-    <h2>其它设置方式</h2>
-    <p>除了直接在 Referrer-Policy 报头中设置之外，也可以通过以下方式设置。</p>
+    <h2>传递方式</h2>
 
     <section>
-        <h3><abbr title="Content Seucrity Policy">CSP</abbr> 报头</h3>
-        <p>可以通过 CSP 报头的 referrer 指令来指定 Referrer 策略：</p>
-        <pre><code>Content-Security-Policy: referrer no-referrer-when-downgrade;</code></pre>
+        <h3>Referrer-Policy 报头</h3>
+        <p>推荐的方式，直接在 Referrer-Policy 报头中设置。</p>
+        <pre><code class="language-http">Referrer-Policy: origin;
+</code></pre>
     </section>
 
     <section>
@@ -242,7 +242,7 @@
         <p>通过指定 name 值为 referrer 的 meta 标签，也可以达到相同的效果：</p>
         <pre><code class="language-html">&lt;meta name="referrer" content="strict-origin" /&gt;
 </code></pre>
-        <p><code>content</code> 可以是上面的指定的值，也可以是下面的几种值，会自动作相应的转换：</p>
+        <p><code>content</code> 可以是上面的指定的值，也可以是下面的几种值，会自动作相应的转换，但不推荐这些旧的指令值：</p>
         <table>
             <thead>
                 <tr><th>Legacy</th><th>Referrer</th></tr>
@@ -272,7 +272,7 @@
         <h3>标签属性</h3>
         <ul>
             <li><code>a</code> 和 <code>link</code> 标签可以通过属性 <code>rel</code> 指定 <code>noreferrer</code>，仅对当前链接有效；</li>
-            <li><code>a</code>、<code>link</code>、<code>iframe</code> 和 <code>img</code> 还可以通过 <code>referrerpolicy</code> 指定仅针对当前链接的设置。</li>
+            <li><code>a</code>、<code>area</code>、<code>link</code>、<code>iframe</code> 和 <code>img</code> 还可以通过 <code>referrerpolicy</code> 指定仅针对当前链接的设置。</li>
         </ul>
     </section>
 </section>
