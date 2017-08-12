@@ -26,7 +26,6 @@
         {{if .Description -}}
         <meta name="description" content="{{.Description|strip}}" itemprop="description" property="og:description" />
         {{- end}}
-
         <link rel="stylesheet" href="{{"default/light.css"|themeURL}}" title="light" />
         <link rel="stylesheet" href="{{"default/dark.css"|themeURL}}" title="dark" />
         <link rel="stylesheet" href="//cdn.bootcss.com/prism/1.6.0/themes/prism.min.css" title="light" />
@@ -48,10 +47,8 @@
             <a class="item" href="{{.URL}}"
             {{- if .Title}} title="{{.Title}}"{{end -}}
             {{- if .Rel}} rel="{{.Rel}}"{{end -}}>
-                {{if .Icon -}}
-                <i class="fa fa-{{.Icon}}" aria-hidden="true"></i>
-                {{- end}}
-                {{.Text}}
+                {{if .Icon}}<i class="fa fa-{{.Icon}}" aria-hidden="true"></i>{{end}}
+                {{- .Text -}}
             </a>
             {{end -}}
 
