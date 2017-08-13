@@ -48,7 +48,7 @@
             {{- if .Title}} title="{{.Title}}"{{end -}}
             {{- if .Rel}} rel="{{.Rel}}"{{end -}}>
                 {{if .Icon}}<i class="fa fa-{{.Icon}}" aria-hidden="true"></i>{{end}}
-                {{- .Text -}}
+                <span>{{.Text}}</span>
             </a>
             {{end -}}
 
