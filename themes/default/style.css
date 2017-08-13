@@ -82,6 +82,10 @@ a:hover {
     flex-wrap: wrap;
 }
 
+#header .item i {
+    margin-right: 3px;
+}
+
 #header .item {
     font-size: 1.2rem;
     border-bottom:1px solid transparent;
