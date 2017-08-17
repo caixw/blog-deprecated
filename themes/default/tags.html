@@ -3,7 +3,7 @@
 
 <div class="tags item">
     <h1>标签</h1>
-    {{range .Tags -}}
+    {{range .Info.Tags -}}
     <a {{if .Color}}style="color:{{.Color}}" {{end}}class="item" href="{{.Permalink}}" type="text/html">{{.Title}}</a>
     {{- end}}
 </div>

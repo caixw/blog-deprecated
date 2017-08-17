@@ -1,7 +1,7 @@
 {{define "links" -}}
 {{template "header" .}}
 
-{{range .Links}}
+{{range .Info.Links}}
 <a href="{{.URL}}"{{- if .Title -}} title="{{.Title}}"{{- end -}}{{- if .Rel -}} rel="{{.Rel}}"{{- end -}}>{{.Text}}</a>
 {{end}}
 

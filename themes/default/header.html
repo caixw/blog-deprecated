@@ -1,26 +1,25 @@
 {{define "header" -}}
 <!DOCTYPE html>
-<html lang="{{.Language}}" itemscope itemtype="https://schema.org/Blog" xmlns:og="http://ogp.me/ns#">
+<html lang="{{.Info.Language}}" itemscope itemtype="https://schema.org/Blog" xmlns:og="http://ogp.me/ns#">
     <head itemscope itemtype="http://schema.org/WebSite" profile="http://gmpg.org/xfn/11">
         <meta charset="utf-8" itemprop="encoding" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}</title>
+        <title>{{if .Title}}{{.Title}} &#8250; {{end}}{{.Info.SiteName}}</title>
         <meta itemprop="headline" content="{{.Subtitle}}" />
-        <meta itemprop="name" content="{{.SiteName}}" />
+        <meta itemprop="name" property="og:site_name" content="{{.Info.SiteName}}" />
         <meta property="og:type" content="article" />
-        <meta property="og:locale" content="{{.Language}}" />
-        <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.SiteName}}" />
-        <meta property="og:site_name" content="{{.SiteName}}" />
-        {{if .Icon -}}<link rel="icon" type="{{.Icon.Type}}" href="{{.Icon.URL}}" />{{- end}}
+        <meta property="og:locale" content="{{.Info.Language}}" />
+        <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.Info.SiteName}}" />
+        {{if .Info.Icon -}}<link rel="icon" type="{{.Info.Icon.Type}}" href="{{.Info.Icon.URL}}" />{{- end}}
         {{- if .Canonical -}}
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />
         <meta property="og:url" content="{{.Canonical}}" />
         {{- end}}
-        {{if .RSS}}<link rel="alternate" type="application/rss+xml" title="{{.RSS.Title}}" href="{{.RSS.URL}}" />{{end}}
-        {{if .Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Atom.Title}}" href="{{.Atom.URL}}" />{{end}}
-        {{if .Opensearch -}}
-        <link rel="search" type="application/opensearchdescription+xml" title="{{.Opensearch.Title}}" href="{{.Opensearch.URL}}" />
+        {{if .Info.RSS}}<link rel="alternate" type="application/rss+xml" title="{{.Info.RSS.Title}}" href="{{.Info.RSS.URL}}" />{{end}}
+        {{if .Info.Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Info.Atom.Title}}" href="{{.Info.Atom.URL}}" />{{end}}
+        {{if .Info.Opensearch -}}
+        <link rel="search" type="application/opensearchdescription+xml" title="{{.Info.Opensearch.Title}}" href="{{.Info.Opensearch.URL}}" />
         {{- end}}
         {{if .Keywords}}<meta name="keywords" content="{{.Keywords}}" itemprop="keywords" />{{end}}
         {{if .Description -}}
@@ -43,7 +42,7 @@
     <body>
     <header id="header">
         <nav>
-            {{range .Menus -}}
+            {{range .Info.Menus -}}
             <a class="item" href="{{.URL}}"
             {{- if .Title}} title="{{.Title}}"{{end -}}
             {{- if .Rel}} rel="{{.Rel}}"{{end -}}>
