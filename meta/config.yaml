@@ -10,6 +10,7 @@ longDateFormat: 2006-01-02 15:04
 shortDateFormat: 2006-01-02
 beian: 	浙ICP备16000327号-1
 theme: default
+type: text/html
 
 # 程序图标
 icon:
@@ -49,11 +50,13 @@ menus:
 atom:
   url: /atom.xml
   size: 20
+  # type: application/atom+xml
 
 # rss 的配置，为空表示没有
 rss:
   url: /rss.xml
   size: 20
+  # type: application/rss+xml
 
 # sitemap 的配置，为空表示没有
 sitemap:
@@ -61,9 +64,10 @@ sitemap:
   xslURL: /sitemap.xsl
   enableTag: true
   tagPriority: 0.5
-  postPriority: 0.4
-  tagChangefreq: "monthly"
-  postChangefreq: "weekly"
+  postPriority: 0.6
+  tagChangefreq: monthly
+  postChangefreq: weekly
+  # type: application/xml
 
 # opensearch 设置
 opensearch:
@@ -72,3 +76,4 @@ opensearch:
   shortName: caixw.io 的搜索引擎
   longName: caixw.io 的搜索引擎
   description: 由 caixw.io 提供的搜索引擎，可根据标题和内容搜索文章。
+  # type: application/opensearchdescription+xml
