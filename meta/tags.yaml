@@ -119,6 +119,12 @@
     <p>一种语义化的版本定义规则。</p>
     </section>
 
+- slug: snippet
+  title: 代码片段
+  content: >
+    <section>
+    </section>
+
 - slug: spl
   title: SPL
   content: >
@@ -126,7 +132,7 @@
     <p>Standard PHP Library，PHP 的标准类库。</p>
     </section>
 
-- slug: tools
+- slug: tool
   title: 工具包
   content: >
     <section>

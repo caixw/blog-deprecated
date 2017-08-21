@@ -1,0 +1,81 @@
+<section>
+<pre><code class="language-javascript">/** 
+ * 在页面上产生个 gotop 按钮。
+ * 用纯粹的 JS 实现，无须额外的 CSS 和 HTML 支持。
+ *
+ * @param int width 网页的主体宽度，以下三种取值
+ * - 0 按钮靠浏览器左
+ * - -1 按钮靠流利器右
+ * - 其它正数 按钮靠网页内容右侧
+ * @return void
+ */ 
+function gotoTop(width) {
+    document.write('<a id="goto-top">^</a>'); 
+    var gotop = document.querySelector('#goto-top');
+
+    /* 默认情况下 CSS 属性的设置 */
+    gotop.style.visibility='hidden';
+    gotop.style.cursor='pointer';
+    gotop.style.position = 'fixed';
+    gotop.style.fontSize='2.5em';
+    gotop.style.fontWeight='900';
+    gotop.style.textAlign='center';
+    gotop.style.background = 'gray';
+    gotop.style.borderRadius = '0.2em';
+    gotop.style.width='1.4em';
+    gotop.style.height='1em';
+    gotop.style.top = (document.documentElement.clientHeight / 2) + 100 + 'px';
+    gotop.style.opacity='0.3';
+    gotop.style.visibility = (document.body.scrollTop + document.documentElement.scrollTop > 10) ? 'visible' : 'hidden';
+
+    if(0 == width) {
+        gotop.style.left = '0em';
+    } else if(-1 == width) {
+        gotop.style.right = '0em';
+    } else {
+        var resize = function() {
+            var left = (document.documentElement.clientWidth - width) / 2 + width + 10;
+            if((left - gotop.clientWidth) &lt; width) {
+                gotop.style.right='0em';
+                gotop.style.left = null;  // 设定了right属性，则需要取消left属性。
+            } else {
+                gotop.style.left = left + 'px';
+                gotop.style.right = null;
+            }
+        };  // end resize
+
+        resize();
+        window.addEventListener('resize', function() {
+            resize();
+        }, false);
+    } // end if
+
+    gotop.addEventListener('mouseover', function() {
+        this.style.opacity='0.8';
+        this.style.textDecoration='none';
+    }, false);
+
+    gotop.addEventListener('mouseout', function() {
+        this.style.opacity='0.3';
+    }, false);
+
+    gotop.addEventListener('click', function() {
+        // IE9 和 opera 下 body.scrollTop 为 0，chrome 下 documentElement.scrollTop 为 0
+        // 两者始终有一个为 0 
+        var h = document.body.scrollTop + document.documentElement.scrollTop; // 当前位置 
+        var t = window.setInterval(function() { 
+            window.scrollTo(0,h -= 100); // 每次上移 100 像素 
+            if(h &lt;= 0) {
+                window.clearInterval(t);
+            }
+        }, 5);
+    }, false); 
+
+    /* 通过 window.onscroll 事件确定按钮是否需要显示 */ 
+    window.addEventListener('scroll', function() { 
+        var scrollTop = document.body.scrollTop + document.documentElement.scrollTop; 
+        gotop.style.visibility = scrollTop &gt; 10 ? 'visible':'hidden'; 
+    }, false); 
+};
+</code></pre>
+</section>
