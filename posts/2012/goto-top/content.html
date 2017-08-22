@@ -26,7 +26,8 @@ function gotoTop(width) {
     gotop.style.height='1em';
     gotop.style.top = (document.documentElement.clientHeight / 2) + 100 + 'px';
     gotop.style.opacity='0.3';
-    gotop.style.visibility = (document.body.scrollTop + document.documentElement.scrollTop > 10) ? 'visible' : 'hidden';
+    var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+    gotop.style.visibility = scrollTop > 10 ? 'visible' : 'hidden';
 
     if(0 == width) {
         gotop.style.left = '0em';

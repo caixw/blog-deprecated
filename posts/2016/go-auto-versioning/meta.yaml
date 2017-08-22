@@ -6,5 +6,5 @@ keywords: Go, semver, 版本号, 自动化
 tags: go,version,semver
 summary: >
     <section>
-    Go 语言中如何自动生成版本号。
+    <p>Go 语言中如何自动生成版本号。</p>
     </section>

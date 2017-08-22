@@ -6,5 +6,5 @@ keywords: RESTful,API,HTTP,RESTful-API,JSON,XML,HTTPS,Security,安全
 tags: restful,api,http,security
 summary: >
     <section>
-    RESTful API 为网络应用程序设计提供了一套统一、合理的风格。本文从实践的角度出发，讨论 RESTful API 设计上的一些细节，探讨如何设计出一套好用、合理、精炼的 API。
+    <p>RESTful API 为网络应用程序设计提供了一套统一、合理的风格。它只是一种风格，而不是标准，所以也就没有一套统一的标准去规范化这些设计，本文从实践的角度出发，讨论 RESTful API 设计上的一些细节，探讨如何设计出一套好用、合理、精炼的 API。</p>
     </section>

@@ -6,5 +6,5 @@ keywords: Go, log, XML, 日志
 tags: go,log,xml
 summary: >
     <section>
-    如何为 Go 设计一个通用的日志处理包。
+    <p>如何为 Go 设计一个通用的日志处理包。</p>
     </section>
