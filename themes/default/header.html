@@ -12,7 +12,7 @@
         <meta property="og:locale" content="{{.Info.Language}}" />
         <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.Info.SiteName}}" />
         {{if .Info.Icon -}}<link rel="icon" type="{{.Info.Icon.Type}}" href="{{.Info.Icon.URL}}" />{{- end}}
-        {{- if .Canonical -}}
+        {{if .Canonical -}}
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />
         <meta property="og:url" content="{{.Canonical}}" />
         {{- end}}
