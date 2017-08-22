@@ -21,7 +21,7 @@ icon:
 # 默认的作者信息
 author:
   name: caixw
-  url: https://caixw.io # 不包含最后的斜杠
+  url: https://caixw.io
 
 # 导航菜单栏
 menus:

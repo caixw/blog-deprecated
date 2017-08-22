@@ -67,7 +67,7 @@ a:hover {
     left: 0;
     width: 100%;
     z-index:1000;
-    padding-top: .4rem;
+    padding-top: .2rem; /* 调整 header 的内容，使其垂直居中 */
 }
 
 #header a {
@@ -137,6 +137,10 @@ a:hover {
 
 /* 600px 需要与 var(--iphone-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
 @media (max-width: 600px) {
+    #header .item {
+        padding: .3rem 1rem
+    }
+
     #header .item span {
         display: none !important;
     }
