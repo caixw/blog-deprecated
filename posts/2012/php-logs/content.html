@@ -1,0 +1,66 @@
+<section>
+    <pre><code class="language-php">/**
+* 记录一条日志，会以以下三种方式依次尝试写日志。
+* - 向当前参数指定的文件写入日志。
+* - 尝试向 php.ini 中指定的 error_log 写内容。
+* - 向系统日志写内容，还是失败的话则返回 false。
+*
+* 不用每次调用时都指定 logFile 和 dateFormat 参数
+* 系统会自动记住上次指定的内容。
+*
+* PHP5.0 之后请确保已经设置好时区，否则可能会抛出一个错误。
+* example:
+* @code php
+* // 第一次调用，初始化日志，并写入第一条信息。
+* logg('init...', LOG_INFO, '/usr/log.txt', 'y-m-d');
+* // 写日志
+* logg('log msg', LOG_INFO);
+* @endcode
+*
+* @param string $message 日志内容
+* @param int $type 日志类型，参照 syslog 函数的参数
+* @param string $logFile 日志文件
+* @param string $dateFormat 日志的时间格式
+* @return bool  是否成功写入
+* @staticvar array $types 参数 $type 对应的描述信息。
+* @staticvar string $file 保存 $logFile 参数最后次传递的内容。
+* @staticvar string $format 保存 $dateFormat 参数最后传递的内容。
+* @link https://caixw.io/posts/2012/php-log.html
+*/
+function logs($message, $type, $logFile = null, $dateFormat = null){
+    static $types = array(
+        LOG_EMERG   => 'EMERG',
+        LOG_ALERT   => 'ALERT',
+        LOG_CRIT    => 'CRITICAL',
+        LOG_ERR     => 'ERROR',
+        LOG_WARNING => 'WARNING',
+        // windows下，以下这三个值是一样的
+        LOG_NOTICE  => 'NOTICE',
+        LOG_DEBUG   => 'DEBUG',
+        LOG_INFO    => 'INFO');
+    static $file = null;
+    static $format = 'Y-m-d H:i:s';
+
+    if(!is_null($logFile)){
+        $file = $logFile;
+    }
+    if(!is_null($dateFormat)){
+        $format = $dateFormat;
+   }
+
+    /* 格式化消息 */
+    $type = isset($types[$type]) ? $type : LOG_INFO;
+    $msg = date($format) . ' [' . $types[$type] . '] ' . $message . PHP_EOL;
+
+    if(error_log($msg, 3, $file)){
+        return true;
+    }
+
+    if(error_log($msg, 0)){
+        return true;
+    }
+
+    return syslog($type, $message);
+}
+</code></pre>
+</section>

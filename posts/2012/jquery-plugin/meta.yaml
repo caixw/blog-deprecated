@@ -1,0 +1,10 @@
+title: jQuery 插件开发简要介绍
+path: content.html
+created: 2012-11-30T01:30:14+08:00
+modified: 2012-11-30T01:31:05+08:00
+keywords: JavaScript,jQuery,插件,jQuery plugin
+tags: javascript,jquery
+summary: >
+    <section>
+    <p>jQuery 插件开发包含了两种模式：一种是类级别的；另一种是对象级别的。有点类似于一个是类的静态函数，可以随时调用，一种是类的成员函数，只有实例化一个类对象，才可以调用。从使用方法上可以很方便得以区分：</p>
+    </section>

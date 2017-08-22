@@ -1,0 +1,206 @@
+<section>
+    <p>jQuery 插件开发包含了两种模式：一种是类级别的；另一种是对象级别的。有点类似于一个是类的静态函数，可以随时调用，一种是类的成员函数，只有实例化一个类对象，才可以调用。从使用方法上可以很方便得以区分：</p>
+    <pre><code class="language-javascript">jQuery.fun();    // 类级别的插件。
+$.fun();         // 类级别的，$相当于jQuery的简写方式。
+$('#foo').fun(); // 对象级别的。
+</code></pre>
+
+    <h2>类级别的插件开发</h2>
+    <p>官方推荐的写法是<code>jQuery.extend(object)</code>：</p>
+    <pre><code class="language-javascrpt">jQuery.extend({
+    fun1:function(){alert('fun1');},
+    fun2:function(){alert('fun2');}
+});
+</code></pre>
+    <p>当然，我们也可以根据自己熟悉的用 JS 实现类的方式来写：jQuery 就相当于一个类，直接给其添加属性就可以了：</p>
+    <pre><code class="language-javascript">jQuery.fun1 = function()
+{   alert('fun1');  }
+
+jQuery.fun2 = function()
+{   alert('fun2');  }
+</code></pre>
+    <p>两种方式实现完全相同，各位童鞋们可以依自己的习惯来书写。</p>
+    <p>为了解决 <code>$</code> 变量相互冲突的问题(prototype.js 也使用了 <code>$</code> 变量名，若同时使用 jquery 和 prototype 则会发生 <code>$</code> 变量冲突)，还有第三种写法：</p>
+        <pre><code class="language-javascript">(function($){
+    $.extend({
+        fun1:function(){alert('fun1');},
+        fun2:function(){alert('fun2'):}
+    });
+})(jQuery);
+</code></pre>
+    <p>这种写法其实和第一种是一样的，只不过把其中的 jQuery 变量抽象出来成为一个匿名函数的形参 <code>$</code>，再通过传递 jQuery 变量给这个匿名函数。</p>
+</section>
+        
+<section>
+    <h2>对象级别的插件开发</h2>
+    <p>对象级别的插件定义，也分为三种：</p>
+    <pre><code class="language-javascript">/* 方法1 */
+jQuery.fn.extend({
+    fun1:function(){alert('fun1');},
+    fun2:function(){alert('fun2');}
+});
+
+/* 方法2 */
+jQuery.fn.fun1 = function()
+{   alert('fun1');  }
+
+jQuery.fn.fun2 = function()
+{   alert('fun2');  }
+
+/* 方法3 */
+(function($){
+    $.fn.extend({
+        fun1:function(){alert('fun1');},
+        fun2:function(){alert('fun2'):}
+    });
+})(jQuery);
+</code></pre>
+    <p>看了这三段代码，细心的朋友可能发现了，这与前面的类级别的插件定义是一样的，只不过所有 <code>jQuery.</code> 后面多了个 <code>fn</code>，而我们查看 jQuery 的源码不难发现：<code>jQuery.fn = jQuery.prototype</code>，熟悉的朋友肯定不会陌生，我们一般定义一个类对象的成员函数就是通过 prototype 来实现，而 jQuery 也是通过 prototype 来实现的。甚至于 <code>jQuery.extend</code> 与 <code>jQuery.fn.extend</code> 的实现也是一样的。</p>
+</section>
+        
+<section>
+    <h2>命名空间</h2>
+    <p>将自己写的插件封闭到一个自定义的命名空间中，有助于解决与其它人插件名称冲突问题，jQuery 也可以和 JS 一样使用使用对象创建命名空间：</p>
+        <pre><code class="language-javascript">/* jQuery.extend 方法，作用于类级别的插件 */
+jQuery.extend({
+    myNamespace:{
+        fun1:function(){alert('fun1');},
+        fun2:function(){alert('fun2');}
+    }
+});
+
+/* 作用于对象级别的命名空间，可以，但有点畸形了，
+    * 至于哪里畸形了，各位可以自己去思考下 */
+jQuery.fn.myNamespace = {
+    fun1:function(){alert('fun1');},
+    fun2:function(){alert('fun2');}   
+};
+
+$.myNamespace.fun1(); // 正常调用命名空间下的函数。
+$('#test').myNamespace.fun1(); // 调用对象级别的插件。
+</code></pre>
+</section>
+        
+<section>
+    <h2><code>extend</code> 函数</h2>
+
+    <p>我们前面一直用 <code>extend</code> 函数进得插件的开发，其实 <code>extend</code> 的作用远不止于此，其原型有如下三种：</p>
+    <pre><code class="language-javascript">extend(dest, src1, src2... srcN);
+extend(bool, dest, src1, src2 ... srcN);
+extend(src);
+</code></pre>
+
+    <p>原型 1 的功能是将 <code>src1</code> 到 <code>srcN</code> 的对象内容合并到 <code>dest</code> 中，并将其作为返回值返回，若后面的对象值与前面的对象值相同，则后面的覆盖前面对象的值。如：</p>
+    <pre><code class="language-javascript">var dest = {name:'admin',url:'https://caixw.io'};
+var src1 = {name:'caixw',email:'webmaster@caixw.io'};
+var src2 = {tel:'18311111111', email:'admin@caixw.io'};
+$.extend(dest, src1, src2); // 返回值为:{name:'caixw',url:'https://caixw.io',email:'admin@caixw.io',tel:'18311111111'}
+</code></pre>
+
+    <p>原型 2 是根据第一个参数的值，确定后面的覆盖是否为深拷贝，深拷贝将对子对象也进行比较，否则子对象将是直接进得覆盖。</p>
+    <pre><code class="language-javascript">var dest = {name:'admin',info:{url:'http://caixw.io'}};
+var src1 = {name:'caixw',info:{email:{'webmaster@caixw.io'}};
+$.extend(true, dest, src1); // 返回值为:{name:'caixw',info:{email:'webmaster@caixw.io','url':http://caixw.io}}
+$.extend(false, dest, src1); // 返回值为：{name:'caixw', info:{email:'webmaster@caixw.io'}}
+</code></pre>
+
+    <p>原型 3 只有一个参数，函数将会把参数对象的内容合并到 <code>extend</code> 调用对象中去，也就是我们开始介绍的插件定义方法用到的功能。</p>
+</section>
+        
+<section>
+    <h2>带参数的插件</h2>
+    <p>大部分插件都会暴露一些参数供使用自定义，以实现界面及行为的调整。假设我们定义了以下一个插件：</p>
+        <pre><code class="language-javascript">/**
+ * 漂亮的tooltip显示
+ *
+ * @version 1
+ * @param foreColor 前景色
+ * @param backColor 背景色
+ * @param opacity   透明度
+ */
+jQuery.fn.tooltip = function(foreColor, backColor, opacity){
+    // todo
+};
+</code></pre>
+
+    <p>当然我们不可能每次都让用户输入这三个参数，所以为每一个参数提供一个默认值是一个很好的选择。但是 JS 下默认参数的使用方法很特别，在这里也不好用，所以我们选择前面介绍的 <code>extend</code> 方法，将参数稍微做一下调整，变成一个对象参数：</p>
+        <pre><code class="language-javascript">/**
+ * 漂亮的tooltip显示
+ *
+ * @version 2
+ * @param options 包含以下三个属性
+ * - foreColor 前景色
+ * - backColor 背景色
+ * - opacity   透明度
+ */
+jQuery.fn.tooltip = function(options){
+    var defaults = {foreColor:'blue',backColor:'black',opacity:0.5};
+    options = jQuery(defaults, options);
+    // todo
+};
+
+$('#tooltip').tooltip({foreColor:'red'}); // 其它两个参数仍然是默认值。
+</code></pre>
+
+    <p>这样就做到了，只需要修改自己需要调整的值，而其它的值仍然保持原样，给使用者省去大量的精力。</p>
+    <p>好吧，另一个问题又来了，插件的使用者需要修改所有的默认值，怎么办？让插件使用者修改源码，这不失为一种方法，但并推荐使用；另一种方法就是把默认参数 <code>defaults</code> 作为一个类级别的属性暴露给用户：</p>
+        <pre><code class="language-javascript">// 声明一个全局的默认变量。 
+jQuery.fn.tooltip.defaults = {foreColor:'blue',backColor:'black',opacity:0.5};
+/**
+ * 漂亮的tooltip显示
+ *
+ * @version 3
+ * @param options 包含以下三个属性
+ * - foreColor 前景色
+ * - backColor 背景色
+ * - opacity   透明度
+ */
+jQuery.fn.tooltip = function(options){
+    options = jQuery.extend({}, jQuery.fn.tooltip.defaults, options);
+    // todo
+};
+
+$.fn.tooltip.defaults.foreColor = 'green'; // 所有背景都变绿了。
+$('#tooltip').tooltip({foreColor:'red'}); // 只有这个是红的
+</code></pre>
+</section>
+        
+<section>
+    <h2><code>this</code> 指针</h2>
+    <p><del><code>jQuery</code> 并未对 <code>this</code> 作什么特殊处理，所以在 <code>this</code> 表示的是一个 HTML 元素对象，若要通过 <code>this</code> 取得 <code>jQuery</code> 对象，则需要使用 <code>$(this)</code>。</del></p>
+        
+    <p>谢谢 <a href="https://www.akasuna.com/">akasuna</a> 的指正。类级别的插件中使用 <code>this</code> 返回的是指向当前函数的指针；对象级别的插件中 <code>this</code> 是 <code>jQuery</code> 对象，若选择器指定的标签不存在，则 <code>jQuery</code> 对象的 <code>length</code> 为 0，否则为符合条件的标签个数。</p>
+        
+    <p>将一个 <code>jQuery</code> 对象传递给 <code>jQuery()</code> 函数，则会原样返回。之前也是因为这个原因，才自然而然地就认为 <code>this</code> 是个非 <code>jQuery</code> 对象。</p>
+        
+    <p>前面讲到将插件封闭到命名空间中，以减少函数的命名冲突。但这在对象级别的插件中却有不少麻烦：<code>this</code> 指针会像类级别的插件一样，指向函数本身。</p>
+        <pre><code class="language-javascript">jQuery.fn.extend({
+    myNamespace:{
+        myPlugin:function(){
+            console.log(typeof this); // 这是一个函数指针
+        }
+    }
+});
+</code></pre>
+
+    <p>此时，<code>myNamespace</code> 才是 <code>jQuery.fn</code> 即 <code>jQuery.prototype</code> 的一个属性，而 <code>myPlugin</code> 则是 <code>myNamespace</code> 的一个普通属性。</p>
+        
+    <p>对于这种方法，貌似也没有什么方法可解决，要么不用命名空间；要么将选择器当作一个参数传递给函数，但这样做，却和类级别的插件一样了。</p>
+</section>
+        
+<section>
+    <h2>测试</h2>
+    <p>这里有一个小软件：<a href="http://www.paulstovell.com/jquerypad">jQueryPad</a>，可以用来测试 jQuery，对于一些小测试还是比较方便的。</p>
+</section>
+        
+<section>
+    <h2>总结</h2>
+    <p>若将 jQuery 当作一个普通的 JS 对象，则插件的定义很好理解，就如以下形式：</p>
+    <pre><code class="language-javascript">var jQuery = {};
+jQuery.fun1 = function(){};   // 类级别的插件
+jQuery.myNamespace.fun1 = function(){}; // 带命名空间的插件
+
+jQuery.prototype.fun2 = function(){}; // 对象级别的插件
+jQuery.prototype.myNamespace.fun2 = function(){} // 带命名空间，但 fun2 是作用在 myNamespace 上而不是 myNamespace.prototype 上。
+</code></pre>
+</section> 

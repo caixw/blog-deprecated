@@ -28,7 +28,7 @@ function initTop () {
     window.addEventListener('scroll', ()=>{showTopButton()})
 
     // 滚动到顶部
-    top.addEventListener('click', ()=>{
+    top.addEventListener('click', (event)=>{
         const times = 20;
         let height = scrollTop()
         const offset = height / times;
@@ -42,6 +42,6 @@ function initTop () {
             }
         }, 10);
 
-        return false;
+        event.returnValue = false // 防止继续执行 A 标签的 href
     });
 }
