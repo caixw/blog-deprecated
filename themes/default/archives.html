@@ -1,0 +1,18 @@
+{{define "archives" -}}
+{{template "header" .}}
+
+<div class="archives">
+    <h1>归档</h1>
+    {{range .Archives -}}
+        <h2>{{.Title}}</h2>
+        <ul>
+            {{range .Posts -}}
+            <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+            {{- end}}
+        </ul>
+    {{- end}}
+</div>
+
+
+{{template "footer" .}}
+{{- end}}

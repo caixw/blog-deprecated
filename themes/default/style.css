@@ -208,7 +208,7 @@ a:hover {
     border-bottom: 1px solid var(--divider-foreground);
 }
 
-#content .tags {
+#content .tags, #content .archives {
     margin-bottom: 1rem;
 }
 

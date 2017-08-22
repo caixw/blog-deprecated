@@ -35,6 +35,11 @@ menus:
     text: 标签
     icon: tags
 
+  - url: /archives.html
+    title: 归档
+    text: 归档
+    icon: archive
+
   - url: /posts/2016/about.html
     title: 关于
     text: 关于
@@ -45,6 +50,11 @@ menus:
     text: Github
     icon: github
     rel: me
+
+# 归档
+archive:
+  type: year
+  format: 2006 年
 
 # atom 的配置，为空表示没有
 atom:
