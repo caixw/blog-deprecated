@@ -61,7 +61,7 @@ a:hover {
 
 /*********** #header ************/
 #header {
-    box-shadow: 1px 1px var(--appbar-background);
+    box-shadow: 0px 1px 2px var(--appbar-background);
     background: var(--appbar-background);
     color: var(--appbar-foreground);
     position: -webkit-sticky;

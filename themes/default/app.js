@@ -1,6 +1,6 @@
 "use strict";
 
-$(document).ready(function(){
+$(function(){
     // 语法高亮
     Prism.plugins.autoloader.languages_path='//cdn.bootcss.com/prism/1.6.0/components/';
     Prism.highlightAll(false);
@@ -33,4 +33,4 @@ $(document).ready(function(){
         return false;
     });
 
-}); // end $(document).ready()
+}); // end $.ready()
