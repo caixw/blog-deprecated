@@ -8,6 +8,9 @@
 
     /* 定义手机的宽度 */
     --phone-width: 600px;
+
+    /* 标题栏的字体大小 */
+    --nav-font-size: 1.2rem;
 }
 
 /*********************** reset */
@@ -87,7 +90,7 @@ a:hover {
 }
 
 #header .item {
-    font-size: 1.2rem;
+    font-size: var(--nav-font-size);
     border-bottom:1px solid transparent;
     color: var(--appbar-foreground);
     padding: 1rem;
@@ -109,29 +112,29 @@ a:hover {
     flex-shrink: 1;
     flex-basis: 2rem;
     z-index: 100;
+    text-align: right;
 
     position: relative; /* 用于 input:foucs 定位用 */
 }
 
 #header .search input {
+    font-size: var(--nav-font-size);
+    text-align: left;
     outline: none;
     border: none;
     color: var(--appbar-foreground);
     background: var(--appbar-background);
     border-bottom: 1px solid var(--appbar-foreground);
-    font-size: 1.2rem;
     width: 100%;
     max-width: 300px;
     transition: width 1s;
-    float: right;
+    position: absolute;
+    right: 0;
     -webkit-appearance: textfield; /* safari */
 }
 
 #header .item.search input:focus {
     width: 300px;
-    transition: width 1s;
-    position: absolute;
-    right: 0;
 }
 
 
