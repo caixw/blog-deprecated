@@ -72,10 +72,10 @@ rss:
 sitemap:
   url: /sitemap.xml
   xslURL: /sitemap.xsl
+  priority: 0.5
+  changefreq: monthly
   enableTag: true
-  tagPriority: 0.5
   postPriority: 0.6
-  tagChangefreq: monthly
   postChangefreq: weekly
   # type: application/xml
 
