@@ -23,6 +23,13 @@ author:
   name: caixw
   url: https://caixw.io
 
+# 默认的版权信息
+license:
+  text: 署名 4.0 国际 (CC BY 4.0)
+  url: https://creativecommons.org/licenses/by/4.0/deed.zh
+  rel: license
+  title: 版本信息
+
 # 导航菜单栏
 menus:
   - url: /

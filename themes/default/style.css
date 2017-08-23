@@ -216,6 +216,10 @@ a:hover {
     margin-right: 1rem;
 }
 
+#content footer {
+    border-top: 1px solid var(--divider-foreground);
+}
+
 .pages-nav {
     margin: 2rem 0 1rem 0;
 }

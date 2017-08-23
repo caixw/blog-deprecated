@@ -16,8 +16,14 @@
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />
         <meta property="og:url" content="{{.Canonical}}" />
         {{- end}}
-        {{if .Info.RSS}}<link rel="alternate" type="application/rss+xml" title="{{.Info.RSS.Title}}" href="{{.Info.RSS.URL}}" />{{end}}
-        {{if .Info.Atom}}<link rel="alternate" type="application/atom+xml" title="{{.Info.Atom.Title}}" href="{{.Info.Atom.URL}}" />{{end}}
+        {{if .Info.RSS -}}
+        <link rel="alternate" type="application/rss+xml" title="{{.Info.RSS.Title}}" href="{{.Info.RSS.URL}}" />
+        {{- end}}
+        {{if .Info.Atom -}}
+        <link rel="alternate" type="application/atom+xml" title="{{.Info.Atom.Title}}" href="{{.Info.Atom.URL}}" />
+        {{- end}}
+        {{if .Author}}<link rel="author" href="{{.Author.URL}}" />{{end}}
+        {{if .License -}}<link rel="license" href="{{.License.URL}}" />{{- end}}
         {{if .Info.Opensearch -}}
         <link rel="search" type="application/opensearchdescription+xml" title="{{.Info.Opensearch.Title}}" href="{{.Info.Opensearch.URL}}" />
         {{- end}}
