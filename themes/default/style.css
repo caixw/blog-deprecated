@@ -199,6 +199,14 @@ a:hover {
     margin-right: .7rem;
 }
 
+#content .post section>p {
+    text-indent: 2em;
+}
+
+#content .post a {
+    color: var(--post-foreground-meta);
+}
+
 #content .post .meta .item a[rel=tag] {
     margin-right: .5rem;
     color: var(--post-foreground-meta);
@@ -284,11 +292,7 @@ a:hover {
 
 
 /**************** .post ***********/
-/* 包含文章内的一些常用格式定义 */
-
-#content .post section>p {
-    text-indent: 2em;
-}
+/* 包含文章内的一些元素格式定义 */
 
 .post table {
     text-align: left;
