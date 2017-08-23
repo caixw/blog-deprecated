@@ -30,11 +30,11 @@
     </header>
     {{.Post.Content|html}}
     <footer>
-        <p>本文采用 <a{{if .Post.License.Rel}} rel="{{.Post.License.Rel}}"{{end}}{{if .Post.License.Title}} title="{{.Post.License.Title}}"{{end}} href="{{.Post.License.URL}}">{{.Post.License.Text}}</a> 创作共享协议。</p>
+        <p>本文采用<a{{if .Post.License.Rel}} rel="{{.Post.License.Rel}}"{{end}}{{if .Post.License.Title}} title="{{.Post.License.Title}}"{{end}} href="{{.Post.License.URL}}">{{.Post.License.Text}}</a>创作共享协议。</p>
 
         <p>
-            转发:
-            <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{.Info.URL}}{{.Post.Permalink}}">QQ空间</a>
+            分享:
+            <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{.Info.URL}}{{.Post.Permalink}}&amp;title={{.Post.Title}}">QQ空间</a>
             <a href="http://v.t.qq.com/share/share.php?url={{.Info.URL}}{{.Post.Permalink}}&amp;title={{.Post.Title}}">腾讯微博</a>
             <a href="http://service.weibo.com/share/share.php?url={{.Info.URL}}{{.Post.Permalink}}">新浪微博</a>
             <a href="http://share.renren.com/share/buttonshare.do?link={{.Info.URL}}{{.Post.Permalink}}&amp;title={{.Post.Title}}">人人网</a>
