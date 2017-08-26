@@ -204,7 +204,7 @@ a:hover {
 }
 
 #content .post a {
-    color: var(--post-foreground-meta);
+    color: var(--post-foreground-link);
 }
 
 #content .post .meta .item a[rel=tag] {
@@ -218,6 +218,10 @@ a:hover {
 
 #content .tags, #content .archives {
     margin-bottom: 1rem;
+}
+
+#content .archives .date {
+    margin-left: 1rem;
 }
 
 #content .tags .item {

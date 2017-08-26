@@ -7,7 +7,10 @@
         <h2>{{.Title}}</h2>
         <ul>
             {{range .Posts -}}
-            <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+            <li>
+                <a href="{{.Permalink}}">{{.Title}}</a>
+                <date datetime="{{.Created|rfc3339}}" class="date">({{.Created|ldate}})</date>
+            </li>
             {{- end}}
         </ul>
     {{- end}}

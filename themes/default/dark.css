@@ -9,7 +9,8 @@
 
     --post-background: #212121;
     --post-foreground: #ccc;
-    --post-foreground-meta: #fff;
+    --post-foreground-link: #fff;
+    --post-foreground-meta: #eee;
 
     --divider-foreground: #333;
 
