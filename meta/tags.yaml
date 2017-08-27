@@ -99,6 +99,13 @@
     <p>macOS 是苹果公司推出的类 UNIX 系统，是其公司 Mac 系列产品的预装该操作系统。由 2016 年 3 月从 OSX 更名为 macOS。</p>
     </section>
 
+- slug: mitm
+  title: 中间人攻击
+  content: >
+    <section>
+    <p><abbr title="Man-in-the-middle attack">MitM</abbr>，中间人攻击。</p>
+    </section>
+
 - slug: php
   title: PHP
   content: >

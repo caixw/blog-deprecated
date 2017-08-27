@@ -30,6 +30,7 @@
     </header>
     {{.Post.Content|html}}
     <footer>
+        {{if .Post.Outdated}}<p>{{.Post.Outdated}}</p>{{end}}
         <p>本文采用<a{{if .Post.License.Rel}} rel="{{.Post.License.Rel}}"{{end}}{{if .Post.License.Title}} title="{{.Post.License.Title}}"{{end}} href="{{.Post.License.URL}}">{{.Post.License.Text}}</a>创作共享协议。</p>
 
         <p>
