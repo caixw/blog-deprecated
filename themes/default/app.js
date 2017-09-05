@@ -46,14 +46,14 @@ function initTop () {
         const offset = height / gototopTimes
 
         const tick = window.setInterval(function(){
-            height -= offset;
+            height -= offset
             window.scrollTo(0, height)
 
             if (height <= 0){
                 window.clearInterval(tick)
             }
-        }, 10);
+        }, 10)
 
         event.returnValue = false // 防止继续执行 A 标签的 href
-    });
+    })
 }

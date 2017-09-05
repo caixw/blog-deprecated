@@ -65,6 +65,7 @@ menus:
 
 # 归档
 archive:
+  order: desc
   type: year
   format: 2006 年
 
