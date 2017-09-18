@@ -21,6 +21,13 @@
     <p>最常用的编码方式之一，有固定的码表，标准码表用到了 <code>/</code> 和 <code>+</code>，所以不能用于 URL 中，会被二次编码。不过也有针对 URL、正则表达式以及其它特殊情况下的 base64 编码。</p>
     </section>
 
+- slug: firefox
+  title: Firefox
+  content: >
+    <section>
+    <p>Mozilla 出品的开源浏览器，跨平台，脱胎于原来的 Netscape 浏览器。</p>
+    </section>
+
 - slug: git
   title: Git
   content: >
@@ -106,11 +113,24 @@
     <p><abbr title="Man-in-the-middle attack">MitM</abbr>，中间人攻击。</p>
     </section>
 
+- slug: opensearch
+  title: Opensearch
+  content: >
+    <section>
+    </section>
+
 - slug: php
   title: PHP
   content: >
     <section>
     <p>世界上最好的语言 PHP</p>
+    </section>
+
+- slug: plugin
+  title: 插件
+  content: >
+    <section>
+    <p></p>
     </section>
 
 - slug: restful

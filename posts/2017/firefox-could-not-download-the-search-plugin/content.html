@@ -1,0 +1,28 @@
+<section>
+    <p>这个问题源自 <a href="https://github.com/caixw/typing">typing</a> 的一个 <a href="https://github.com/caixw/typing/issues/18">BUG</a>。最初生成的 opensearch 代码如下：</p>
+
+    <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"&gt;
+    &lt;InputEncoding&gt;UTF-8&lt;/InputEncoding&gt;
+    &lt;OutputEncoding&gt;UTF-8&lt;/OutputEncoding&gt;
+    &lt;ShortName&gt;caixw.io 的搜索引擎&lt;/ShortName&gt;
+    &lt;Description&gt;由 caixw.io 提供的搜索引擎，可根据标题和内容搜索文章。&lt;/Description&gt;
+    &lt;LongName&gt;caixw.io 的搜索引擎&lt;/LongName&gt;
+    &lt;Image type="image/png"&gt;/favicon.png&lt;/Image&gt;
+    &lt;Url template="/search.html?q={searchTerms}" method="GET" type="text/html" /&gt;
+    &lt;Developer&gt;typing&lt;/Developer&gt;
+    &lt;Language&gt;zh-cmn-Hans&lt;/Language&gt;
+&lt;/OpenSearchDescription&gt;
+</code></pre>
+    <p>无意中发现在 Firefox 搜索框中添加搜索引擎时，会提示：“无法下载插件”。照官方的<a href="https://developer.mozilla.org/zh-CN/Add-ons/Creating_OpenSearch_plugins_for_Firefox#.E6.8E.92.E9.94.99.E6.8C.87.E5.8D.97">排错指南</a>提示了以下两种可能：</p>
+    <ul>
+        <li>没有正确设置 <code>xmlns</code> 属性值；</li>
+        <li>必须包含一个 <code>type</code> 属性值为 <code>text/html</code> 的 <code>Url</code> 元素；</li>
+    </ul>
+    
+    <p>但是很明显我的这份 opensearch.xml 没有这些问题。之后又根据自己的经验，去尝试修改可能出错的地方，比如去掉多余的元素、修改 Content-Type 为 <code>text/xml</code> 等，但是错误依旧。于是这个 BUG 就被扔在了 Github 上，期待有缘人来解决了。</p>
+
+
+    <p>直接到后来某次将 <code>Url</code> 元素的 <code>template</code> 改成带域名的绝对 URL，发现一切都正常了。</p>
+</section>
+
