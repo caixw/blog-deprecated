@@ -117,6 +117,7 @@
   title: Opensearch
   content: >
     <section>
+    <p>基于 XML 的网站搜索协议，目前所有的主流浏览器都支持该协议。</p>
     </section>
 
 - slug: php
@@ -130,7 +131,6 @@
   title: 插件
   content: >
     <section>
-    <p></p>
     </section>
 
 - slug: restful
@@ -144,7 +144,6 @@
   title: 安全
   content: >
     <section>
-    <p></p>
     </section>
 
 - slug: semver
