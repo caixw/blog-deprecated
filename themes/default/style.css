@@ -304,6 +304,10 @@ a:hover {
 /**************** .post ***********/
 /* 包含文章内的一些元素格式定义 */
 
+.post img {
+    max-width: 100%; /* 小屏幕上限定宽度 */
+}
+
 .post table {
     text-align: left;
     border-collapse: collapse;
