@@ -1,7 +1,7 @@
 {{define "post-list" -}}
 <div class="posts">
     {{- range .Posts}}
-    <article class="post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
         <header>
             <h2 class="title">
                 <a href="{{.Permalink}}" itemprop="url" type="text/html">
