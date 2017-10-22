@@ -11,6 +11,7 @@ longDateFormat: 2006-01-02 15:04
 shortDateFormat: 2006-01-02
 beian: 	浙ICP备16000327号-1
 theme: default
+outdated: 8760h # 24*365 小时，遵守 time.ParseDuration 语法
 type: text/html
 
 # 程序图标
@@ -19,10 +20,6 @@ icon:
   type: image/png
   sizes: 256x256
 
-outdated:
-  type: created
-  duration: 8760h # 24*365 小时，遵守 time.ParseDuration 语法
-  content: 这篇文章更新于 %d 天之前，其中描述的内容可能已不再正确，请谨慎对待！ # 遵守 fmt 包语法， %d 为天数
 
 # 默认的作者信息
 author:

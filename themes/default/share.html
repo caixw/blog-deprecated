@@ -1,0 +1,13 @@
+{{define "share" -}}
+<p>
+    分享:
+    <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{.Canonical}}&amp;title={{.Post.Title}}">QQ空间</a>
+    <a href="http://v.t.qq.com/share/share.php?url={{.Canonical}}&amp;title={{.Post.Title}}">腾讯微博</a>
+    <a href="http://service.weibo.com/share/share.php?url={{.Canonical}}">新浪微博</a>
+    <a href="http://share.renren.com/share/buttonshare.do?link={{.Canonical}}&amp;title={{.Post.Title}}">人人网</a>
+    <a href="http://www.kaixin001.com/repaste/share.php?rurl={{.Canonical}}&amp;rtitle={{.Post.Title}}">开心网</a>
+    <a href="http://shuo.douban.com/!service/share?href={{.Canonical}}&amp;name={{.Post.Title}}">豆瓣</a>
+    <a href="http://cang.baidu.com/do/add?iu={{.Canonical}}&amp;titleit={{.Post.Title}}">百度收藏</a>
+    <a href="http://tieba.baidu.com/f/commit/share/openShareApi?url={{.Canonical}}&amp;title={{.Post.Title}}">贴吧</a>
+</p>
+{{- end}}
