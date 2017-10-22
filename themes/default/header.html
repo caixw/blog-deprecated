@@ -5,12 +5,12 @@
         <meta charset="utf-8" itemprop="encoding" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{if .Title}}{{.Title}} &#8250; {{end}}{{.Info.SiteName}}</title>
+        <title>{{.Title}}</title>
         <meta itemprop="headline" content="{{.Subtitle}}" />
         <meta itemprop="name" property="og:site_name" content="{{.Info.SiteName}}" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="{{.Info.Language}}" />
-        <meta property="og:title" content="{{if .Title}}{{.Title}} &#8250; {{end}}{{.Info.SiteName}}" />
+        <meta property="og:title" content="{{.Title}}" />
         {{if .Info.Icon -}}<link rel="icon" type="{{.Info.Icon.Type}}" href="{{.Info.Icon.URL}}" />{{- end}}
         {{if .Canonical -}}
         <link rel="canonical" href="{{.Canonical}}" itemprop="url" />

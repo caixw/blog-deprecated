@@ -1,6 +1,7 @@
 # /data/config.yaml
 
 title: caixw
+titleSeparator: " | "
 subtitle: 好记性不如烂笔头
 url: https://caixw.io  # 不包含最后的斜杠
 uptime: 2016-03-06T00:00:01+08:00
@@ -73,13 +74,13 @@ archive:
 atom:
   url: /atom.xml
   size: 20
-  # type: application/atom+xml
+  type: application/atom+xml
 
 # rss 的配置，为空表示没有
 rss:
   url: /rss.xml
   size: 20
-  # type: application/rss+xml
+  type: application/rss+xml
 
 # sitemap 的配置，为空表示没有
 sitemap:
@@ -90,7 +91,7 @@ sitemap:
   enableTag: true
   postPriority: 0.6
   postChangefreq: weekly
-  # type: application/xml
+  type: application/xml
 
 # opensearch 设置
 opensearch:
@@ -99,4 +100,33 @@ opensearch:
   shortName: caixw.io 的搜索引擎
   longName: caixw.io 的搜索引擎
   description: 由 caixw.io 提供的搜索引擎，可根据标题和内容搜索文章。
-  # type: application/opensearchdescription+xml
+  type: application/opensearchdescription+xml
+
+pages:
+  archives:
+    title: "归档"
+    keywords: 归档,存档,archive,archive
+    description: 归档内容
+
+  posts: # 首页即列表页内容
+    title: abc
+    keywords: Go,caixw,caixw.io,技术,博客
+    description: 技术类博客
+
+  post:
+    title: "%content%"
+
+  links:
+    title: 友情链接
+    keywords: 友情链接,链接,好友,同类博客
+
+  tags:
+    title: 标签
+    description: 所有的标签列表以及专题内容
+
+  tag:
+    title: "标签：%content%"
+
+  search:
+    title: "搜索：%content%"
+    keywords: "搜索,search,%content%,query"
