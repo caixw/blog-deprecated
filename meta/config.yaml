@@ -106,7 +106,6 @@ pages:
     description: 归档内容
 
   posts: # 首页即列表页内容
-    title: abc
     keywords: Go,caixw,caixw.io,技术,博客
     description: 技术类博客
 

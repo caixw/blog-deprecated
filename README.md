@@ -1,6 +1,6 @@
-# blogs
+# blog
 
-本人博客 https://caixw.io 内容的备份
+本人博客 https://caixw.io 的数据源。
 
 
-适用于 https://github.com/caixw/typing 博客程序
+适用于 https://github.com/caixw/gitype 博客程序
