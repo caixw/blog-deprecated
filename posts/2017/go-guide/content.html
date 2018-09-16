@@ -1,0 +1,79 @@
+<section>
+    <p>本人长期使用 Go 过程中形成的一些编码约定，仅供参考，未必适合所有人。</p>
+</section>
+
+<section>
+    <h2 id="section-gofmt">gofmt</h2>
+    <p>所有代码在提交之前，都应该通过 <code>gofmt</code> 格式化，这样可以保证所有代码格式的一致性。</p>
+    <p>大部分编辑器和 IDE 都有相应的插件可以实现自动调用 gofmt 工具。若是没用，则需要手动调用该工具格式化代码。若是使用 Git 或是类似的源码管理工具，也可以在 <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=git+gofmt&amp;type="><code>pre-commit</code></a> 钩子中调用 gofmt 对代码进行格式化。</p>
+    <p>注：在<time datetime="2017-02-01">当前</time>的 Go 版本中，会将所有的字符宽度都当作等长来计算，所以像汉字等宽度大于英文字符的，在经过 gofmt 格式化之后，反而会破坏原来其对齐效果，变得参差不齐。</p>
+</section>
+
+<section>
+    <h2 id="section-comment">注释</h2>
+    <p>使用 <code>//</code> 作为代码注释，而 <code>/* */</code> 仅作为代码中临时性地去掉某些代码块使用。</p>
+    <section>
+        <h3 id="section-comment-package">包注释</h3>
+        <p>每个包都应该包含且只能包含一个包注释，包注释以 <code>Package packagename </code> 作为开头，包注释应该放在与包同名的文件中，或是注释比较长时，新建一个<samp>doc.go</samp> 仅用于包注释的声明：</p>
+        <pre><code class="language-go">// file header
+
+// Package example 这是一个示包注释
+package example
+</code></pre>
+    </section>
+</section>
+
+<section>
+    <h2 id="section-name">命名</h2>
+    <section>
+        <h3 id="section-file">文件</h3>
+    </section>
+</section>
+
+<section>
+    <h2 id="section-func">函数</h2>
+</section>
+
+
+<section>
+    <h2 id="section-empty">空值</h2>
+</section>
+
+
+<section>
+    <h2 id="section-package">包</h2>
+    <p>按功能对代码进行分包，每个包应该尽量小，对当前包的增强或是补充操作，可以当作一个子包，若是包的一些内部通用功能，则要放到 <code>internal</code> 包中。</p>
+</section>
+
+<section>
+    <h2 id="section-import">导入</h2>
+    <p>只能以<strong>绝对路径</strong>引用包。导入多个外部包时，应该按以下方式进行分类，每个分类之间以一行空行进行分隔：</p>
+    <ol>
+        <li>标准库；</li>
+        <li>引入的第三方包，包括 <code>golang.org/x</code> 下的包；</li>
+        <li>当前库或是程序的包；</li>
+        <li>仅用于初始的包。</li>
+    </ol>
+    <pre><code class="language-go">import(
+    "net/http"
+    "strings"
+
+    "github.com/issue9/mux"
+    "github.com/issue9/logs"
+    "golang.org/x/tools/godoc"
+
+    "github.com/caixw/apidoc/input"
+
+    _ "github.com/mattn/go-sqlite3"
+)</code></pre>
+
+    <p>如果引入的包名和文件夹名称不相同，则应该给出一个明确的包名：</p>
+    <pre><code class="language go">import yaml "gopkg.in/yaml.v2"</code></pre>
+</section>
+
+
+<section>
+    <h2>参考</h2>
+    <p><cite><a href="https://github.com/golang/go/wiki/CodeReviewComments">CodeReviewComments</a></cite></p>
+    <p><cite><a href="https://golang.org/doc/effective_go.html">Effective Go</a></cite></p>
+</section>
