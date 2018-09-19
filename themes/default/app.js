@@ -9,11 +9,11 @@
  */
 const gototopTimes = 20
 const gototopDistance = 30
-const prismAutoloaderPath = '//cdn.bootcss.com/prism/1.6.0/components/'
+const prismAutoloaderPath = '//cdn.bootcss.com/prism/1.14.0/components/'
 
 /**
  * 程序的入口代码。
- * DOM 加载完成之后，才执行操作，相当于原来的 jQuery.ready
+ * DOM 加载完成之后，才执行操作，相当于 jQuery.ready
  */
 window.document.addEventListener('DOMContentLoaded', ()=>{
     // 语法高亮
