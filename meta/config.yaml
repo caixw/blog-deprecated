@@ -52,13 +52,13 @@ menus:
   - url: /posts/2016/about.html
     title: 关于
     text: 关于
-    icon: info-circle
+    icon: info
 
-  - url: https://github.com/caixw
-    title: Github
-    text: Github
-    icon: github
-    rel: me
+  - url: /rss.xml
+    title: RSS
+    text: RSS 订阅
+    icon: rss
+
 
 # 归档
 archive:

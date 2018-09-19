@@ -3,14 +3,37 @@
 /******************** vars */
 
 :root {
-    /* 页面宽度 */
+    /* --max-width 表示页面的最大宽度。
+     * -- phone-width 表示手机模式下的最大宽度，当宽度值小于此值时，
+     * 页面自动转换为手机模式，部分内容不再显示。
+     *
+     * 这两个值同时作用于 media query 功能，
+     * 但是 media query 本身并不支持 css variable，所以修改这两个值，
+     * 需要同时修改之后的 media query 的相关数值。 */
     --max-width: 70rem;
-
-    /* 定义手机的宽度 */
     --phone-width: 600px;
 
     /* 标题栏的字体大小 */
     --nav-font-size: 1.2rem;
+
+    /* 下面这些变量主要用于自定义颜色用。
+     * 用户可以根据通过 JS 控制这些变更的值，达到更换颜色的目的。 */
+
+    /*--background: #fff;
+
+    --appbar-background: #3f51b5;
+    --appbar-foreground: #ebeaf6;
+    --appbar-link-foreground: #bbb;
+
+    --post-background: #ebeaf6;
+    --post-foreground: #212121;
+    --post-foreground-link: #000;
+    --post-foreground-meta: #757575;
+
+    --divider-foreground: #f5f5f5;
+
+    --placeholder-foreground: #bdbdbd;
+    */
 }
 
 /*********************** reset */
