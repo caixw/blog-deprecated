@@ -7,15 +7,15 @@
                 <a href="{{.Permalink}}" type="text/html">{{.Title}}</a>
             </h2>
             <div class="meta">
-                <span class="item" aria-label="发布时间">
+                <time class="item" datetime="{{.Created|rfc3339}}" pubdate="pubdate" aria-label="发布时间">
                     <i title="发布时间" class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-                    <time datetime="{{.Created|rfc3339}}">{{.Created|sdate}}</time>
-                </span>
+                    {{.Created|sdate}}
+                </time>
 
-                <span class="item" aria-label="修改时间">
+                <time class="item" datetime="{{.Modified|rfc3339}}" aria-label="修改时间">
                     <i title="修改时间" class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                    <time datetime="{{.Modified|rfc3339}}">{{.Modified|sdate}}</time>
-                </span>
+                    {{.Modified|sdate}}
+                </time>
 
                 <span class="item" aria-label="关联标签">
                     <i title="关联标签" class="fa fa-tags" aria-hidden="true"></i>

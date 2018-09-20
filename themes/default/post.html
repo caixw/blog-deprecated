@@ -5,15 +5,15 @@
     <header>
         <h1 class="title">{{.Post.Title}}</h1>
         <div class="meta">
-            <span class="item" aria-label="发布时间">
+            <time class="item" datetime="{{.Post.Created|rfc3339}}" pubdate="pubdate" aria-label="发布时间">
                 <i title="发布时间" class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-                <time datetime="{{.Post.Created|rfc3339}}">{{.Post.Created|ldate}}</time>
-            </span>
+                {{.Post.Created|ldate}}
+            </time>
 
-            <span class="item" aria-label="修改时间">
+            <time class="item" datetime="{{.Post.Modified|rfc3339}}" aria-label="修改时间">
                 <i title="修改时间" class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                <time datetime="{{.Post.Modified|rfc3339}}">{{.Post.Modified|ldate}}</time>
-            </span>
+                {{.Post.Modified|ldate}}
+            </time>
 
             <span class="item" aria-label="关联标签">
                 <i title="关联标签" class="fa fa-tags" aria-hidden="true"></i>
@@ -35,7 +35,7 @@
           <p>{{.Content}}</p>
           {{- else if .Days}}
             {{- if eq .Type "created" -}}
-            <p>文章创建于 <time date="{{.Date|rfc3339}}">{{.Days}} 天之前</time>，内容可能已经不准确，请谨慎对待！</p>
+            <p>文章创建于 <time date="{{.Date|rfc3339}}" pubdate="pubdate">{{.Days}} 天之前</time>，内容可能已经不准确，请谨慎对待！</p>
             {{- else if eq .Type "modified" -}}
             <p>文章更新于 <time date="{{.Date|rfc3339}}">{{.Days}} 天之前</time>，内容可能已经不准确，请谨慎对待！</p>
             {{end}}
