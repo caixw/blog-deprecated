@@ -19,7 +19,7 @@
     /* 下面这些变量主要用于自定义颜色用。
      * 用户可以根据通过 JS 控制这些变更的值，达到更换颜色的目的。 */
 
-    /*--background: #fff;
+    --background: #fff;
 
     --appbar-background: #3f51b5;
     --appbar-foreground: #ebeaf6;
@@ -33,7 +33,6 @@
     --divider-foreground: #f5f5f5;
 
     --placeholder-foreground: #bdbdbd;
-    */
 }
 
 /*********************** reset */
