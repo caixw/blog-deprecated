@@ -58,7 +58,6 @@ initTheme()
 
 function initTheme() {
     let name = getQuery(themeKey);
-    console.log("theme=?",name)
 
     if (!name) { // 地址参数中不存在，则从 store 中查找。
         name = store.getItem(themeKey);

@@ -1,6 +1,9 @@
 @charset "utf-8";
 
-/******************** vars */
+/* Copyright 2018 by caixw, All rights reserved.
+ * Use of this source code is governed by a MIT
+ * license that can be found in the LICENSE file. */
+
 
 :root {
     /* --max-width 表示页面的最大宽度。
@@ -121,6 +124,10 @@ a:hover {
     flex-grow: 0;
 }
 
+#header .item:hover {
+    color: var(--appbar-link-foreground);
+}
+
 #header .item:first-child {
     padding-left: 0;
 }
@@ -153,18 +160,18 @@ a:hover {
     transition: width 1s;
     position: absolute;
     right: 0;
-    -webkit-appearance: textfield; /* safari */
+    -webkit-appearance: none; /* safari */
 }
 
 #header .item.search input:focus {
-    width: 300px;
+    width: calc(100vw - 2rem); /* 保证在极小的屏幕下，不会超过整个屏幕的宽度 */
 }
 
 
 /* 600px 需要与 var(--iphone-width) 的值相同，但是 media query 不能直接引用 css 变量。 */
 @media (max-width: 600px) {
     #header .item {
-        padding: .3rem 1rem
+        padding: .3rem .7rem;
     }
 
     #header .item span {
@@ -187,6 +194,10 @@ a:hover {
     max-width: var(--max-width);
     margin: auto;
     padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #footer p {
@@ -274,6 +285,10 @@ a:hover {
 @media (max-width: 70rem) {
     #sidebar-nav .fa {
         display: none !important;
+    }
+
+    #sidebar-nav a {
+        display: inline;
     }
 }
 

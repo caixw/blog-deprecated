@@ -28,6 +28,7 @@ window.document.addEventListener('DOMContentLoaded', ()=>{
  */
 function initTop () {
     const top = window.document.getElementById('top')
+    const gototopDisplay = top.style.display;
 
     const scrollTop = function() {
         return document.body.scrollTop + document.documentElement.scrollTop
@@ -35,7 +36,7 @@ function initTop () {
 
     // 根据与页面顶部的距离，控制是否显示 top 按钮。
     const showTopButton = function() {
-        const dsp = scrollTop() > gototopDistance ? 'block' : 'none'
+        const dsp = scrollTop() > gototopDistance ? gototopDisplay : 'none'
         if (dsp !== top.style.display) {
             top.style.display = dsp
         }
@@ -58,6 +59,6 @@ function initTop () {
             }
         }, 10)
 
-        event.returnValue = false // 防止继续执行 A 标签的 href
+        event.preventDefault(); // 防止继续执行 A 标签的 href
     })
 }
