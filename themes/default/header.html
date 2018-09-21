@@ -19,6 +19,9 @@
         {{if .Site.Opensearch -}}
         <link rel="search" type="{{.Site.Opensearch.Type|html}}" title="{{.Site.Opensearch.Title}}" href="{{.Site.Opensearch.URL}}" />
         {{- end}}
+        {{if .Site.PWA -}}
+        <link rel="manifest" type="{{.Site.PWA.Type|html}}" href="{{.Site.PWA.URL}}" />
+        {{- end}}
         {{if .Author -}}<link rel="author" href="{{.Author.URL}}" />{{- end}}
         {{if .License -}}<link rel="license" href="{{.License.URL}}" />{{- end}}
         {{if .Keywords -}}<meta name="keywords" content="{{.Keywords}}" />{{- end}}

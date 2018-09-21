@@ -98,6 +98,12 @@ opensearch:
   description: 由 caixw.io 提供的搜索引擎，可根据标题和内容搜索文章。
   type: application/opensearchdescription+xml
 
+pwa:
+  url: /manifest.json
+  name: caixw 的博客
+  shortName: caixw
+  type: application/manifest+json
+
 pages:
   archives:
     title: "归档"
