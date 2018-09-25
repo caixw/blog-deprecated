@@ -62,3 +62,17 @@ function initTop () {
         event.preventDefault(); // 防止继续执行 A 标签的 href
     })
 }
+
+function regServiceWorker(sw) {
+    if (!('serviceWorker' in navigator) || !sw) {
+        return
+    }
+
+    window.addEventListener('load', ()=>{
+        navigator.serviceWorker.register(sw).then((reg)=>{
+            console.info('注册 service worker 成功，scope：', reg.scope);
+        }).catch((err)=>{
+            console.error('注册 service worker 错误：', err);
+        });
+    });
+}

@@ -1,6 +1,20 @@
+# 当前主题的相关信息
+
+# 版本号直接跟随 gitype 版本号变化
+version: 3.2.0+180925
 name:  default
-version: 0.2.4+180920
-description: 系统默认主题
+description: 默认主题
 author:
-    name: caixw
-    url: https://github.com/caixw
+  name: caixw
+  url: https://github.com/caixw
+
+assets:
+  - /default/style.css
+  - /default/prism.css
+  - https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
+  - https://cdn.bootcss.com/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.css
+  - https://cdn.bootcss.com/prism/1.14.0/prism.min.js
+  - https://cdn.bootcss.com/prism/1.14.0/plugins/autoloader/prism-autoloader.min.js
+  - https://cdn.bootcss.com/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.js
+  - default/theme.js
+  - default/app.js

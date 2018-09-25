@@ -5,5 +5,5 @@ keywords: PHP,XML,SimpleXML
 tags: php,xml
 summary: >
     <section>
-    <p>SimpleXML</code> 提供了一套简单快速的 XML 操作方法，大大地提高了 XML 操作的效率。但是有时不小心也会带来不小的麻烦，看下面一段代码：</p>
+    <p><code>SimpleXML</code> 提供了一套简单快速的 XML 操作方法，大大地提高了 XML 操作的效率。但是有时不小心也会带来不小的麻烦，看下面一段代码：</p>
     </section>

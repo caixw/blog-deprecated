@@ -99,10 +99,12 @@ opensearch:
   type: application/opensearchdescription+xml
 
 pwa:
-  url: /manifest.json
-  name: caixw 的博客
-  shortName: caixw
-  type: application/manifest+json
+  serviceWorker: /sw.js
+  manifest:
+    url: /manifest.json
+    name: caixw 的博客
+    shortName: caixw
+    type: application/manifest+json
 
 pages:
   archives:
