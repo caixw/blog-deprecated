@@ -21,7 +21,7 @@
         <footer id="footer">
             <div class="container">
                 <div>
-                    <span>&#8482; 2016 - 2018 by
+                    <span>&#169; 2016 - 2018 by
                         <a href="{{.Site.URL}}" type="text/html">caixw</a>
                     </span>
                     <span aria-hidden="true">&#8901;</span>
@@ -68,6 +68,7 @@
                 "keywords": "{{.Keywords}}",
                 "datePublished": "{{.Post.Created|rfc3339}}",
                 "dateModified": "{{.Post.Modified|rfc3339}}",
+                "image": "{{.Post.Image}}",
                 "license": "{{.License}}",
                 "articleBody":"{{.Post.Content}}"
             }
@@ -105,7 +106,20 @@
 
         {{if .Site.ServiceWorker -}}
         <script>
-            regServiceWorker({{.Site.ServiceWorker}})
+            const path = {{.Site.ServiceWorker}};
+            if (('serviceWorker' in navigator) && path) {
+                register();
+            }
+
+            function register() {
+                window.addEventListener('load', ()=>{
+                    navigator.serviceWorker.register(path).then((reg)=>{
+                        console.info('注册 service worker 成功，scope：', reg.scope);
+                    }).catch((err)=>{
+                        console.error('注册 service worker 错误：', err);
+                    });
+                });
+            }
         </script>
         {{- end}}
 
