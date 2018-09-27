@@ -1,7 +1,7 @@
 # 当前主题的相关信息
 
 # 版本号直接跟随 gitype 版本号变化
-version: 3.3.0+180926
+version: 3.3.1+180927
 name:  default
 description: 默认主题
 author:

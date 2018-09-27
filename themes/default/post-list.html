@@ -1,7 +1,7 @@
 {{define "post-list" -}}
 <div class="posts">
     {{- range .Posts}}
-    <article class="post">
+    <article class="post" lang="{{.Language}}">
         <header>
             <h2 class="title">
                 <a href="{{.Permalink}}" type="text/html">{{.Title}}</a>

@@ -1,7 +1,7 @@
 {{define "post" -}}
 {{template "header" .}}
 
-<article class="post">
+<article class="post" lang="{{.Post.Language}}">
     <header>
         <h1 class="title">{{.Post.Title}}</h1>
         <div class="meta">
